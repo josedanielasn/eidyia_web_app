@@ -7,4 +7,9 @@ class User < ApplicationRecord
   has_many :user_programs
   has_many :programs, through: :user_programs
   has_many :comments
+  validates :firstname, presence: true, length: {minimum:2, maximum:20}
+  validates :lastname, presence: true, length: {minimum:2, maximum:20}
+  validates :username, presence: true, uniqueness: true, length: {minimum:3, maximum:30}
+  validates :role, presence: true
+  enum role: {admin: 0, instructor: 1, student: 2}
 end
