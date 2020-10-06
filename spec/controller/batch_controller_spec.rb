@@ -4,7 +4,6 @@ RSpec.describe BatchController, type: :controller do
 
     login_user
 
-
     describe 'GET #index' do
         before do
           get :index
@@ -28,7 +27,6 @@ RSpec.describe BatchController, type: :controller do
 
     describe 'GET #edit' do
         before do
-          # something that you want to execute before running `it` block
           get :edit, params: params
         end
     
