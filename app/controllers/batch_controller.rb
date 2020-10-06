@@ -16,7 +16,7 @@ class BatchController < ApplicationController
             redirect_to batch_index_url
         else
             flash[:notice] =  'An error occured while saving'
-            redirect_to new_user_url    
+            redirect_to new_batch_url    
 
         end
     end
