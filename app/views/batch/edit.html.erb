@@ -1,0 +1,7 @@
+<h1>Edit Page</h1>
+
+
+<%= form_with url: update_batch_url(@batch), method: :put do |f| %>
+  <%= f.text_field :batch_name, :value => @batch.batch_name %>
+  <%= f.submit "update" %>
+<% end %>
