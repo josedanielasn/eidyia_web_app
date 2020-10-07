@@ -19,7 +19,7 @@ RSpec.describe BatchController, type: :controller do
           get :new
         end
     
-        it 'renders new template' do
+        it 'is expected to render a new template' do
           is_expected.to render_template(:new)
         end
     
@@ -65,21 +65,4 @@ RSpec.describe BatchController, type: :controller do
             end
         end
     end
-
-
-    describe "should go to index" do
-        it "it has a 200 status code" do
-          get :index
-          expect(response.status).to eq(200)
-        end
-    end
-
-    describe "should create a batch " do
-        it "it should redirect to index if post route is succesfull" do
-            post :create, :params => { :batch => { :batch_name => "batch_name" } }
-            expect(response.status).to eq(302)
-        end
-    end   
-    
-
 end
