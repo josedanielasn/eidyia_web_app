@@ -4,7 +4,7 @@ RSpec.describe BatchController, type: :controller do
 
     login_user
 
-    describe 'GET batch#index' do
+    describe '1. GET batch#index' do
         before do
           get :index
         end
@@ -14,7 +14,7 @@ RSpec.describe BatchController, type: :controller do
         end
     end
 
-    describe 'GET batch#new' do
+    describe '2. GET batch#new' do
         before do
           get :new
         end
@@ -33,7 +33,7 @@ RSpec.describe BatchController, type: :controller do
     
     end
 
-    describe "POST batch#create" do
+    describe "3. POST batch#create" do
         context 'when params is valid' do
 
           it 'create batch with valid attributes' do
@@ -44,7 +44,7 @@ RSpec.describe BatchController, type: :controller do
       end 
     end
   
-    describe 'GET batch#show' do
+    describe '4. GET batch#show' do
       before do
         get :show, params: params
       end
@@ -64,7 +64,7 @@ RSpec.describe BatchController, type: :controller do
     end
 
 
-    describe 'GET batch#edit' do
+    describe '5. GET batch#edit' do
         before do
           get :edit, params: params
         end
@@ -83,7 +83,7 @@ RSpec.describe BatchController, type: :controller do
         end
       end
 
-    describe 'PATCH batch#update' do
+    describe '6. PATCH batch#update' do
 
         before do
            patch :update, params: params
