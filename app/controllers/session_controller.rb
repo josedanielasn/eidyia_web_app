@@ -1,8 +1,8 @@
-class BatchController < ApplicationController
+class SessionController < ApplicationController
     before_action :session_params, only: [ :create, :update, :show, :edit]
    
     def index
-      @session = Session.all
+      @sessions = Session.all
     end
     
     def new
@@ -10,38 +10,44 @@ class BatchController < ApplicationController
     end
 
     def create
-        @session_create = Session.create(session_params)
+        @program = Program.create(course_id: params[:course][:course_id], batch_id: params[:batch][:batch_id])
+        if @program.save
+            @session_create = Session.create(session_name: params[:session_name], program_id: @program.id)
+            @session_create.save
 
-        if @session_create.save
             redirect_to session_index_url
         else
-            flash[:notice] =  'An error occured while saving'
+            flash[:notice] =  'An error occured while creating'
             redirect_to new_session_url    
         end
     end
     
     def show
        @session = Session.find_by(session_params)
+       @get_course = @session.program.course_id
+    
     end
 
     def edit
        @session = Session.find_by(session_params)
-
     end
 
     def update
         @session = Session.find(params[:id])
+        byebug
+
         if @session
+          
             @session.update(session_params)
             redirect_to show_session_url
         else
-            flash[:errors] = @user.errors.full_messages 
+            flash[:notice] = "An error occured while updating" 
             redirect_to  edit_session_url  
         end
     end
 
     private
     def session_params
-        params.permit(:session_name, :id, :program_id)
+        params.permit(:session_name, :id, :program_id, :course_id, :batch_id)
     end
 end
