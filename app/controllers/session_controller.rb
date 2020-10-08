@@ -11,7 +11,9 @@ class SessionController < ApplicationController
 
     def create
         @program = Program.create(course_id: params[:course][:course_id], batch_id: params[:batch][:batch_id])
-        if @program.save
+        if @program.valid?
+            
+            @program.save
             @session_create = Session.create(session_name: params[:session_name], program_id: @program.id)
             @session_create.save
 

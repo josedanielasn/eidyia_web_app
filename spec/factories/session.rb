@@ -1,6 +1,12 @@
 FactoryBot.define do
-    factory :session do
-      session_name {"Lecture 1"}
-      program_id {1}
-    end
+
+  factory :session do     
+      transient do
+        program { create(:program) }
+      end
+        session_name {'session_name'}
+        program_id {program.id}
+       
+  end
+
 end 
