@@ -35,9 +35,9 @@ RSpec.describe BatchController, type: :controller do
 
     describe "POST batch#create" do
         context 'when params is valid' do
-
+          let(:data) { FactoryBot.create :batch }
           it '1. create batch with valid attributes' do
-            batch_params = { batch: {batch_name: 'batch1'}}
+            batch_params = { batch: {batch_name: data.batch_name}}
             post :create, :params => batch_params
             expect(response).to have_http_status(302)
           end
