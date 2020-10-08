@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to index_courses_path
     else
-      render 'new'
+      render 'index'
     end
   end
 
