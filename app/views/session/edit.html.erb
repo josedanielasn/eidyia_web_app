@@ -1,1 +1,8 @@
 <h1> Edit Page</h1>
+
+<%= form_with url: update_session_url(@session), method: :put do |f| %>
+  <%= f.text_field :session_name, :value => @session.session_name %>
+   <%= collection_select(:course,:course_id, Course.all, :id, :course_name, {:selected => @program.course_id}) %>
+   <%= collection_select(:batch, :batch_id, Batch.all, :id, :batch_name,  {:selected => @program.batch_id}) %> 
+  <%= f.submit "update" %>
+<% end %>
