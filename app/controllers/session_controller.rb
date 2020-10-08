@@ -23,21 +23,21 @@ class SessionController < ApplicationController
     end
     
     def show
-       @session = Session.find_by(session_params)
-       @get_course = @session.program.course_id
-    
+       @session = Session.find_by(session_params)    
     end
 
     def edit
        @session = Session.find_by(session_params)
+       @program = Program.find(@session.program.id)
+    
     end
 
     def update
         @session = Session.find(params[:id])
-        byebug
-
+        @program = Program.find(@session.program.id)
+       
         if @session
-          
+            @program.update(course_id: params[:course][:course_id], batch_id: params[:batch][:batch_id] )
             @session.update(session_params)
             redirect_to show_session_url
         else
@@ -48,6 +48,6 @@ class SessionController < ApplicationController
 
     private
     def session_params
-        params.permit(:session_name, :id, :program_id, :course_id, :batch_id)
+        params.permit(:session_name, :id, :course_id, :batch_id)
     end
 end
