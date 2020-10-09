@@ -4,7 +4,7 @@ RSpec.describe SessionController, type: :controller do
 
     login_user
 
-    describe 'GET session#index' do
+    describe 'GET: session#index' do
         before do
           get :index
         end
@@ -12,14 +12,13 @@ RSpec.describe SessionController, type: :controller do
         it '1.) is expected to assign session instance variable' do
           expect(assigns[:sessions]).to eq(Session.all)
         end
-
         it "2.)renders the index view" do
             get :index
             expect(response).to render_template("index")
         end
     end
 
-    describe 'GET session#new' do
+    describe 'GET: session#new' do
         before do
           get :new
         end
@@ -30,7 +29,6 @@ RSpec.describe SessionController, type: :controller do
           it "1.) is expected to initialized a new batch" do
             expect(sessions).to be_a_new(Session)
           end
-  
           it '2.) is expected to render a new template' do
               is_expected.to render_template(:new)
           end
@@ -47,14 +45,14 @@ RSpec.describe SessionController, type: :controller do
             program_params = { course_id: program.course_id, batch_id: program.batch_id}
             post :create, :params => program_params
 
-            expect(response).to have_http_status(200)
+            expect(response).to have_http_status(302)
           end
-          # it '2.) create session with valid attributes' do
-          #   session_params = { session: {session_name: session.session_name, program_id: session.program_id}}
-          #   post :create, :params => session_params
+          it '2.) create session with valid attributes' do
+            session_params = { session: {session_name: session.session_name, program_id: session.program_id}}
+            post :create, :params => session_params
 
-          #   expect(response).to have_http_status(302)
-          # end
+            expect(response).to have_http_status(302)
+          end
       end 
     end
   
@@ -99,25 +97,31 @@ RSpec.describe SessionController, type: :controller do
         end
       end
 
-    # describe 'PATCH session#update' do
+    describe 'PATCH: session#update' do
 
-    #     before do
-    #        patch :update, params: params
-    #     end
+        before do
+           patch :update, params: params
+        end
     
-    #     context 'when session exist in database' do
-    #     let(:session) { FactoryBot.create :session }
-    #     let(:params) { { id: session.id, program_id: session.program_id } }
+        context 'when session exist in database' do
+        let(:session) { FactoryBot.create :session }
+        let(:program) { FactoryBot.create :program }
+        let(:params) { { id: session.id, program_id: session.program_id } }
 
-    #         context 'when data is provided is valid' do
-    #             it '1. is expected to update session name' do
-    #                 expect(session.reload.batch_name).to eq('session_name')
-    #             end
-
-    #             it '2. is_expected to redirect_to users_path' do
-    #                 is_expected.to redirect_to(show_batch_url)
-    #             end
-    #         end
-    #     end
-    # end
+            context 'when data is provided is valid' do
+                it '1.) is expected to update session name' do
+                    expect(session.reload.session_name).to eq('session_name')
+                end
+                it '2.) is expected to update program course_id' do
+                  expect(program.reload.course_id).to eq(2)
+                end
+                it '3.) is expected to update program batch_id' do
+                  expect(program.reload.batch_id).to eq(2)
+                end
+                it '4.) is_expected to redirect_to users_path' do
+                    is_expected.to redirect_to(show_session_url)
+                end
+            end
+        end
+    end
 end
