@@ -35,12 +35,20 @@ RSpec.describe BatchController, type: :controller do
 
     describe "POST: batch#create" do
         context 'when params is valid' do
-          let(:data) { FactoryBot.create :batch }
           it '1.) create batch with valid attributes' do
-            batch_params = { batch: {batch_name: data.batch_name}}
+            batch_params =  {  batch: attributes_for(:batch) } 
             post :create, :params => batch_params
             expect(response).to have_http_status(302)
           end
+
+          context 'when params is invalid' do
+            it '1.) should redirect to new page' do
+              batch_params =  {  batch: attributes_for(:batch, :invalid_batch_name) } 
+              post :create, :params => batch_params
+              expect(response).to have_http_status(302)
+            end
+          end 
+
       end 
     end
   
@@ -50,11 +58,11 @@ RSpec.describe BatchController, type: :controller do
       end
   
       context 'when batch id is valid' do
-        let(:batch) { FactoryBot.create :batch }
-        let(:params) { { id: batch.id } }
+        let(:batch) {create(:batch)}
+        let(:params) { { id: batch.id} }
   
         it '1.) is expected to set batch instance variable' do
-          expect(assigns[:batch]).to eq(Batch.find_by(id: params[:id]))
+          expect(assigns[:batch]).to eq(Batch.find(params[:id]))
         end
   
         it '2.) is expected to render show template' do
@@ -70,8 +78,9 @@ RSpec.describe BatchController, type: :controller do
         end
     
         context 'when batch id is valid' do
-          let(:batch) { FactoryBot.create :batch }
+          let(:batch) {create(:batch)}
           let(:params) { { id: batch.id } }
+
     
           it '1.) is expected to set batch instance variable' do
             expect(assigns[:batch]).to eq(Batch.find_by(id: params[:id]))
@@ -84,24 +93,30 @@ RSpec.describe BatchController, type: :controller do
       end
 
     describe 'PATCH: batch#update' do
-
-        before do
-           patch :update, params: params
-        end
-    
+      before do
+        patch :update, params: params
+      end
         context 'when batch exist in database' do
-           let(:batch) { FactoryBot.create :batch }
-           let(:params) { { id: batch.id } }
+        let(:batch) {create(:batch)}
+         let(:params) { {id:  batch.id}}
 
             context 'when data is provided is valid' do
                 it '1.) is expected to update batch name' do
-                    expect(batch.reload.batch_name).to eq('batch_name')
+                  expect(batch.reload.batch_name).to eq('batch_name')
                 end
 
                 it '2.) is_expected to redirect_to users_path' do
                     is_expected.to redirect_to(show_batch_url)
                 end
             end
+
+            context 'when params is invalid' do
+              let(:invalid_batch)  { { batch: attributes_for(:batch, :invalid_batch_name) }} 
+             
+              it '1.) should redirect to edit page' do
+                expect(response).to have_http_status(302)
+              end
+            end 
         end
     end
 end
