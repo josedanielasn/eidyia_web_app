@@ -26,7 +26,7 @@ RSpec.describe SessionController, type: :controller do
         context "when initialized" do
           subject(:sessions) { Session.new }
       
-          it "1.) is expected to initialized a new batch" do
+          it "1.) is expected to initialized a new session" do
             expect(sessions).to be_a_new(Session)
           end
           it '2.) is expected to render a new template' do
@@ -38,8 +38,8 @@ RSpec.describe SessionController, type: :controller do
 
     describe "POST: sesion#create" do
         context 'when params is valid' do
-          let(:program) { FactoryBot.create :program }
-          let(:session) { FactoryBot.create :session }
+          let(:program) { create :program }
+          let(:session) { create :session }
           
           it '1.) create program with valid attributes' do
             program_params = { course_id: program.course_id, batch_id: program.batch_id}
@@ -54,6 +54,14 @@ RSpec.describe SessionController, type: :controller do
             expect(response).to have_http_status(302)
           end
       end 
+
+      context 'when params is invalid' do
+        it '1.) should redirect to new page' do
+          session_params =  {  session: attributes_for(:session, :invalid_session_name) } 
+          post :create, :params => session_params
+          expect(response).to have_http_status(302)
+        end
+      end 
     end
   
     describe 'GET: session#show' do
@@ -61,11 +69,11 @@ RSpec.describe SessionController, type: :controller do
         get :show, params: params
       end
   
-      context 'when batch id is valid' do
-        let(:session) { FactoryBot.create :session }
+      context 'when session id is valid' do
+        let(:session) { create :session }
         let(:params) { { id: session.id } }
   
-        it '1.) is expected to set batch instance variable' do
+        it '1.) is expected to set session instance variable' do
           expect(assigns[:session]).to eq(Session.find_by(id: params[:id]))
         end
   
@@ -81,8 +89,8 @@ RSpec.describe SessionController, type: :controller do
           get :edit, params: params
         end
     
-        context 'when batch id is valid' do
-          let(:session) { FactoryBot.create :session }
+        context 'when session id is valid' do
+          let(:session) { create :session }
           let(:params) { { id: session.id, program_id: session.program_id } }
     
           it '1.) is expected to set session instance variable' do          
@@ -104,8 +112,8 @@ RSpec.describe SessionController, type: :controller do
         end
     
         context 'when session exist in database' do
-        let(:session) { FactoryBot.create :session }
-        let(:program) { FactoryBot.create :program }
+        let(:session) { create :session }
+        let(:program) { create :program }
         let(:params) { { id: session.id, program_id: session.program_id } }
 
             context 'when data is provided is valid' do
@@ -122,6 +130,14 @@ RSpec.describe SessionController, type: :controller do
                     is_expected.to redirect_to(show_session_url)
                 end
             end
+
+            context 'when params is invalid' do
+              let(:invalid_session)  { { session: attributes_for(:session, :invalid_session_name) }} 
+             
+              it '1.) should redirect to edit page' do
+                expect(response).to have_http_status(302)
+              end
+            end 
         end
     end
 end
