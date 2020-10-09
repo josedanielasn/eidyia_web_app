@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   post '/session' => 'session#create', as: 'create_session'
   get '/session/:id' => 'session#show', as: 'show_session'
   get '/session/:id/edit' => 'session#edit', as: 'edit_session'
-  put '/session/:id' => 'session#update', as: 'update_session'
+  put '/session/:id'      => 'session#update', as: 'update_session'
+#session routes end
 
 end
