@@ -16,6 +16,9 @@ end
     lastname {'Doe'}
     username {'user_name'}
     password {'password'}
+  end
+
+  trait :admin do 
     role {0}
   end
 end
