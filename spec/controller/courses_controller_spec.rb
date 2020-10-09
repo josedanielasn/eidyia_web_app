@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe CoursesController, type: :controller do
   login_user
 
-  describe "Get INDEX" do
+  describe "GET index" do
     before do
       get :index
     end
@@ -21,7 +21,7 @@ RSpec.describe CoursesController, type: :controller do
     end
   end
 
-  describe "Post CREATE" do
+  describe "POST create" do
     before do
       post :create, params: params
     end
@@ -49,7 +49,7 @@ RSpec.describe CoursesController, type: :controller do
     end
   end
 
-   describe "Get Edit" do
+   describe "GET Edit" do
     before do
       # course = create(:course)
       get :edit, params: params
@@ -69,7 +69,7 @@ RSpec.describe CoursesController, type: :controller do
     end
   end
 
-  describe "Get Update" do
+  describe "GET Update" do
     before do
       post :update, params: params
     end
