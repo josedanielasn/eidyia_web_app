@@ -27,3 +27,4 @@ RSpec.describe Batch, type: :model do
     end  
   end
   
+  
