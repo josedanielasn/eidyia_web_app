@@ -1,7 +1,7 @@
 RSpec.describe Session, type: :model do
     describe 'validations' do
         context 'when creating a session' do            
-            subject(:session)  {FactoryBot.create :session}
+            subject(:session)  {create :session}
             it '1.) is expected to validate the presence of session_name ' do
               expect(session).to be_valid
             end      
