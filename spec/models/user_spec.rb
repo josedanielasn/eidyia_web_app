@@ -1,71 +1,70 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe "Validation Tests" do
-    
-    describe "Testing for presence" do
-      
-      it "1. should have a non-empty firstname" do
-        user = build(:user, firstname: "")
+  describe "Validation" do
+    let(:user) {build(:user)}
+    context "Testing for presence" do
+      it "1.) is not valid without a firstname" do
+        user.firstname = ''
         expect(user.valid?).to equal(false)
       end
 
-      it "2. should have not have an empty lastname" do
-        user = build(:user, lastname: "")
+      it "2.) is not valid without a lastname" do
+        user.lastname = ''
         expect(user.valid?).to equal(false)
       end
 
-      it "3. should have not have an empty username" do
-        user = build(:user, username: "")
+      it "3. is not valid without a username" do
+        user.username = ''
         expect(user.valid?).to equal(false)
       end
 
-      it "4. should have not have an empty password" do
-        user = build(:user, password: "")
+      it "4. is not valid without a password" do
+        user.password = ''
         expect(user.valid?).to equal(false)
       end
 
-      it "5. should have not have an empty role" do
-        user = build(:user, role: "")
+      it "5. is not valid without a role" do
+        user.role = ''
         expect(user.valid?).to equal(false)
       end
     end
 
-    describe "Testing for length " do
-      it "6. should have a firstname with length greater or equal to 2" do
-        user = build(:user, firstname: '1')
+    context "Testing for length " do
+      it "6. it is not valid if the firstname has less than 2 characters" do
+        user.firstname = '1'
         expect(user.valid?).to  equal(false)
       end
 
-      it "7. should have a lastname with length greater or equal to 2" do
-        user = build(:user, lastname: '1')
+      it "7. it is not valid if the lastname has less than 2 characters" do
+        user.lastname = '1'
         expect(user.valid?).to  equal(false)
       end
 
-      it "8. should have a username with length greater or equal to 3" do
-        user = build(:user, username: '11')
+      it "8. it is not valid if the username has less than 3 characters" do
+        user.username = '11'
         expect(user.valid?).to  equal(false)
       end
 
-      it "9. should have a firstname with length greater or equal to 20" do
-        user = build(:user, firstname: '1' * 21)
+      it "9. it is not valid if the firstname has greater than 20 characters" do
+        user.firstname = '1'* 21
         expect(user.valid?).to  equal(false)
       end
 
-      it "10. should have a lastname with length greater or equal to 20" do
-        user = build(:user, lastname: '1' * 21 )
+      it "10. it is not valid if the lastname has greater than 20 characters" do
+        user.lastname = '1'* 21
         expect(user.valid?).to  equal(false)
       end
 
-      it "11. should have a username with length greater or equal to 30" do
-        user = build(:user, username: '1' * 31)
+      it "11. it is not valid if the firstname has greater than 30 characters" do
+        user.username = '1'* 31
         expect(user.valid?).to  equal(false)
       end
     end
     
     describe "Testing for uniqueness" do
-      it "12. should have a unique username" do
-        user = create(:user)
+      it "12. it is not valid if the username is not unique" do
+        user.save
         user_dup = build(:another_user_same_username)
         expect(user_dup.valid?).to  equal(false)
       end
