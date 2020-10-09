@@ -55,13 +55,13 @@ RSpec.describe SessionController, type: :controller do
           end
       end 
 
-      context 'when params is invalid' do
-        it '1.) should redirect to new page' do
-          session_params =  {  session: attributes_for(:session, :invalid_session_name) } 
-          post :create, :params => session_params
-          expect(response).to have_http_status(302)
-        end
-      end 
+        context 'when params is invalid' do
+          it '1.) should redirect to new page' do
+            session_params =  {  session: attributes_for(:session, :invalid_session_name) } 
+            post :create, :params => session_params
+            expect(response).to have_http_status(302)
+          end
+        end 
     end
   
     describe 'GET: session#show' do
