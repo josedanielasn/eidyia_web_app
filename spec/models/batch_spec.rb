@@ -3,7 +3,7 @@ RSpec.describe Batch, type: :model do
     describe 'validations' do
 
         context 'when creating a batch' do
-            let(:batch) { FactoryBot.create :batch }
+            let(:batch) { create :batch }
     
             it '1.) is expected to validate the presence of batch_name ' do
                 expect(batch).to be_valid
