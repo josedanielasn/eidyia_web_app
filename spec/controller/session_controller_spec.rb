@@ -26,10 +26,10 @@ RSpec.describe SessionController, type: :controller do
         context "when initialized" do
           subject(:sessions) { Session.new }
       
-          it "1.) is expected to initialized a new session" do
+          it "3.) is expected to initialized a new session" do
             expect(sessions).to be_a_new(Session)
           end
-          it '2.) is expected to render a new template' do
+          it '4.) is expected to render a new template' do
               is_expected.to render_template(:new)
           end
         end
@@ -40,7 +40,7 @@ RSpec.describe SessionController, type: :controller do
         context 'when params is valid' do
           let(:session) { create :session }
           
-          it '1.) create session with valid attributes' do
+          it '5.) create session with valid attributes' do
             session_params = { session: {session_name: session.session_name, program_id: session.program_id}}
             post :create, :params => session_params
 
@@ -49,7 +49,7 @@ RSpec.describe SessionController, type: :controller do
       end 
 
         context 'when params is invalid' do
-          it '1.) should redirect to new page' do
+          it '6.) should redirect to new page' do
             session_params =  {  session: attributes_for(:session, :invalid_session_name) } 
             post :create, :params => session_params
             expect(response).to have_http_status(302)
@@ -66,11 +66,11 @@ RSpec.describe SessionController, type: :controller do
         let(:session) { create :session }
         let(:params) { { id: session.id } }
   
-        it '1.) is expected to set session instance variable' do
+        it '7.) is expected to set session instance variable' do
           expect(assigns[:session]).to eq(Session.find_by(id: params[:id]))
         end
   
-        it '2.) is expected to render show template' do
+        it '8.) is expected to render show template' do
           is_expected.to render_template(:show)
         end
       end
@@ -86,11 +86,11 @@ RSpec.describe SessionController, type: :controller do
           let(:session) { create :session }
           let(:params) { { id: session.id, program_id: session.program_id } }
     
-          it '1.) is expected to set session instance variable' do          
+          it '9.) is expected to set session instance variable' do          
             expect(assigns[:session]).to eq(Session.find_by(id: params[:id]))
            end
 
-          it '2.) is expected to render edit template' do
+          it '10.) is expected to render edit template' do
             is_expected.to render_template(:edit)
           end
         end
@@ -107,11 +107,11 @@ RSpec.describe SessionController, type: :controller do
         let(:params) { { id: session.id, program_id: session.program_id } }
 
             context 'when data is provided is valid' do
-                it '1.) is expected to update session name' do
+                it '11.) is expected to update session name' do
                     expect(session.reload.session_name).to eq('session_name')
                 end
                
-                it '2.) is_expected to redirect_to users_path' do
+                it '12.) is_expected to redirect_to users_path' do
                     is_expected.to redirect_to(show_session_url)
                 end
             end
@@ -119,7 +119,7 @@ RSpec.describe SessionController, type: :controller do
             context 'when params is invalid' do
               let(:invalid_session)  { { session: attributes_for(:session, :invalid_session_name) }} 
              
-              it '1.) should redirect to edit page' do
+              it '13.) should redirect to edit page' do
                 expect(response).to have_http_status(302)
               end
             end 
