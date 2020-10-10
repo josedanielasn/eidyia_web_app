@@ -1,0 +1,24 @@
+
+<h1>EDIT</h1>
+
+<div>
+  <%= form_with model: @course, url: {controller: 'courses', action: 'update'} do |f|%>
+    <span> Course Name </span>
+    <%= f.text_field :course_name %>
+    <div>
+      <%= f.submit "Save Changes"%>
+    </div>
+  <% end %>
+</div>
+
+
+<div>
+  <table>
+    <% @courses.each do |course|%>
+      <tr>
+        <td><%= course.course_name%></td>
+        <td><%= link_to  "Edit", edit_courses_path(course) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
