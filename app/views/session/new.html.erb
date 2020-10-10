@@ -2,7 +2,10 @@
 
 <%= form_with url: create_session_path, local: true do |f| %>
   <%= f.text_field :session_name %>
-  <%= collection_select(:course,:course_id, Course.all, :id, :course_name) %>
-  <%= collection_select(:batch, :batch_id, Batch.all, :id, :batch_name) %>
+ 
+  <%= f.select :program_id, @program.collect  { |p|
+ 
+  [ "#{p.try(:course).try(:course_name)}--#{p.try(:batch).try(:batch_name)}", p.id ] }, 
+  include_blank: "-Select a Course-" %>
   <%= f.submit "Create" %>
 <% end %>
