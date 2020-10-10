@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "Validation" do
-    let(:user) {build(:user)}
+    let(:user) {build(:user, :admin)}
     context "Testing for presence" do
       it "1.) is not valid without a firstname" do
         user.firstname = ''
