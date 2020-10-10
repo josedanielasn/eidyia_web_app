@@ -86,7 +86,7 @@ RSpec.describe CoursesController, type: :controller do
       end
     end
 
-    context "when data is valid" do
+    context "when data is invalid" do
       let(:params) { { id: course.id, course: attributes_for(:course, :invalid_course_name) } }
       it "13.) it is expected to valid course_name" do
         is_expected.to render_template(:edit)
