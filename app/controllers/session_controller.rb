@@ -1,20 +1,18 @@
 class SessionController < ApplicationController
-    before_action :session_params, only: [ :create, :update, :show, :edit]
     def index
       @sessions = Session.all
     end
     
     def new
       @session_new = Session.new
+      @program = Program.all
+
     end
 
     def create
-       @program = Program.create(course_id:params.dig(:course, :course_id), 
-                                 batch_id: params.dig(:batch,:batch_id) )
-        if @program.valid?
-            
-            @program.save
-            @session_create = Session.create(session_name: params[:session_name], program_id: @program.id)
+        @session_create = Session.create(session_params)
+
+        if @session_create.valid?            
             @session_create.save
 
             redirect_to session_index_url
@@ -30,17 +28,17 @@ class SessionController < ApplicationController
 
     def edit
        @session = Session.find_by(session_params)
-       @program = Program.find(@session.program.id)
+       @program = Program.all   
+      # byebug   
+       @get_program = @session.program.id
     
     end
 
     def update
         @session = Session.find(params[:id])
-        @program = Program.find(@session.program.id)
        
-        if @session.valid? && @program.valid?
-            @program.update( course_id:params.dig(:course, :course_id), 
-                             batch_id: params.dig(:batch,:batch_id) )
+        if @session.valid? 
+         
             @session.update(session_params)
             redirect_to show_session_url
         else
@@ -51,6 +49,6 @@ class SessionController < ApplicationController
 
     private
     def session_params
-        params.permit(:session_name, :id, :course_id, :batch_id)
+        params.permit(:session_name, :id, :program_id)
     end
 end
