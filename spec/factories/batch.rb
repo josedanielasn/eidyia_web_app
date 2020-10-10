@@ -6,5 +6,8 @@ FactoryBot.define do
         batch_name {''} 
       end 
 
+      trait :edited_batch do
+        batch_name{"batch testing"}
+      end
     end
 end 
