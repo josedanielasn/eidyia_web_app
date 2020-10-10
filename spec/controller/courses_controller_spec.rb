@@ -51,7 +51,6 @@ RSpec.describe CoursesController, type: :controller do
 
    describe "GET: courses#edit" do
     before do
-      # course = create(:course)
       get :edit, params: params
     end
     let(:course) { create(:course) }
