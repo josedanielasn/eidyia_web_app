@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe CoursesController, type: :controller do
   login_user
 
-  describe "GET index" do
+  describe "GET: courses#index" do
     before do
       get :index
     end
 
-    it "1.) Should render index template" do
+    it "1.) it is expected to render index template" do
       is_expected.to render_template(:index)
     end
 
@@ -21,7 +21,7 @@ RSpec.describe CoursesController, type: :controller do
     end
   end
 
-  describe "POST create" do
+  describe "POST: courses#create" do
     before do
       post :create, params: params
     end
@@ -43,20 +43,20 @@ RSpec.describe CoursesController, type: :controller do
 
     context "when invalid course is created" do
       let(:params) { { course: attributes_for(:course, course_name:'') } }
-      it '7.) should render index template' do
+      it '7.) it is expected to render index template' do
         is_expected.to render_template(:index)
       end
     end
   end
 
-   describe "GET Edit" do
+   describe "GET: courses#edit" do
     before do
       # course = create(:course)
       get :edit, params: params
     end
     let(:course) { create(:course) }
     let(:params) { { id: course.id } }
-    it "8.) should render edit template" do
+    it "8.) it is expected to render edit template" do
       is_expected.to render_template(:edit)
     end
 
@@ -69,7 +69,7 @@ RSpec.describe CoursesController, type: :controller do
     end
   end
 
-  describe "GET Update" do
+  describe "PATCH: courses#update" do
     before do
       post :update, params: params
     end
@@ -82,14 +82,14 @@ RSpec.describe CoursesController, type: :controller do
 
     context "when data is valid" do
       let(:params) { { id: course.id, course: attributes_for(:course, :edited_course) } }
-      it "12.) should save valid course_name" do
+      it "12.) it is expected to save valid course_name" do
         is_expected.to redirect_to index_courses_path
       end
     end
 
     context "when data is valid" do
       let(:params) { { id: course.id, course: attributes_for(:course, :invalid_course_name) } }
-      it "13.) should save valid course_name" do
+      it "13.) it is expected to valid course_name" do
         is_expected.to render_template(:edit)
       end
     end
