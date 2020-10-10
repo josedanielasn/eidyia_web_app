@@ -38,16 +38,9 @@ RSpec.describe SessionController, type: :controller do
 
     describe "POST: sesion#create" do
         context 'when params is valid' do
-          let(:program) { create :program }
           let(:session) { create :session }
           
-          it '1.) create program with valid attributes' do
-            program_params = { course_id: program.course_id, batch_id: program.batch_id}
-            post :create, :params => program_params
-
-            expect(response).to have_http_status(302)
-          end
-          it '2.) create session with valid attributes' do
+          it '1.) create session with valid attributes' do
             session_params = { session: {session_name: session.session_name, program_id: session.program_id}}
             post :create, :params => session_params
 
@@ -96,10 +89,8 @@ RSpec.describe SessionController, type: :controller do
           it '1.) is expected to set session instance variable' do          
             expect(assigns[:session]).to eq(Session.find_by(id: params[:id]))
            end
-          it '2.) is expected to set program instance variable' do          
-            expect(assigns[:program]).to eq(Program.find_by(id: params[:program_id]))
-          end
-          it '3.) is expected to render edit template' do
+
+          it '2.) is expected to render edit template' do
             is_expected.to render_template(:edit)
           end
         end
@@ -113,20 +104,14 @@ RSpec.describe SessionController, type: :controller do
     
         context 'when session exist in database' do
         let(:session) { create :session }
-        let(:program) { create :program }
         let(:params) { { id: session.id, program_id: session.program_id } }
 
             context 'when data is provided is valid' do
                 it '1.) is expected to update session name' do
                     expect(session.reload.session_name).to eq('session_name')
                 end
-                it '2.) is expected to update program course_id' do
-                  expect(program.reload.course_id).to eq(2)
-                end
-                it '3.) is expected to update program batch_id' do
-                  expect(program.reload.batch_id).to eq(2)
-                end
-                it '4.) is_expected to redirect_to users_path' do
+               
+                it '2.) is_expected to redirect_to users_path' do
                     is_expected.to redirect_to(show_session_url)
                 end
             end
