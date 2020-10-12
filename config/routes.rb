@@ -26,13 +26,15 @@ Rails.application.routes.draw do
   put '/session/:id'      => 'session#update', as: 'update_session'
 #session routes end
 
- #video 
- get '/video' => 'video#index', as: 'video_index'
- get '/video/new' => 'video#new', as: 'new_video'
- post '/video' => 'video#create', as: 'create_video'
- get '/video/:id' => 'video#show', as: 'show_video'
- get '/video/:id/edit' => 'video#edit', as: 'edit_video'
- put '/video/:id'      => 'video#update', as: 'update_video'
+resources :videos
+
+#video 
+#  get '/videos' => 'videos#index', as: 'video_index'
+#  get '/videos/new' => 'videos#new', as: 'new_video'
+#  post '/videos' => 'videos#create', as: 'create_video'
+#  get '/videos/:id' => 'videos#show', as: 'show_video'
+#  get '/videos/:id/edit' => 'videos#edit', as: 'edit_video'
+#  put '/videos/:id'      => 'videos#update', as: 'update_video'
 #video routes end
 
 end
