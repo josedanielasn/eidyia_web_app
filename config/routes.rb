@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-# Courses
- get '/course/index'=> 'courses#index', as: 'index_courses'
- get '/course/new' => 'courses#new', as: 'new_courses'
- post '/course/create'=> 'courses#create', as: 'create_courses'
- get '/course/:id/edit'=> 'courses#edit', as: 'edit_courses'
- patch '/course/:id/update'=> 'courses#update', as:'update_courses'
+
+  root controller: :announcements, action: :index
+
+  # announcements
+  get '/announcements', to: 'announcements#index', as: 'index_announcement'
+
+  # Courses
+  get '/course/index', to: 'courses#index', as: 'index_courses'
+  get '/course/new' => 'courses#new', as: 'new_courses'
+  post '/course/create'=> 'courses#create', as: 'create_courses'
+  get '/course/:id/edit'=> 'courses#edit', as: 'edit_courses'
+  patch '/course/:id/update'=> 'courses#update', as:'update_courses'
+
     
 #batch
  get '/batch'          => 'batch#index',  as: 'batch_index'
