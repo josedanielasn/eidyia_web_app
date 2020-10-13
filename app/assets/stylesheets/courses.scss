@@ -24,3 +24,32 @@
   .card-img{
     height: 250px
   }
+
+  .card-body .btn{
+    margin-right: 4rem;;
+    background-color:#385777;
+    color: #fff;
+    width: 15%;
+  }
+
+  .modal-footer .btn{
+    margin-right: 0;
+    color: #fff;
+    width: 20%
+  }
+
+  
+  .card-body .btn:hover{
+    color: #fff;
+    border: 1px solid #000;
+  }
+
+  .modal-footer .btn:hover{
+    background-color:#385777;
+    color: #fff;
+    border: 1px solid #000;
+  }
+
+
+
+  
