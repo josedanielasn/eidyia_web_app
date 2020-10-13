@@ -21,18 +21,19 @@ input:focus {
     outline:none; 
 }
 
-label  {
-color:#999; 
-font-size:18px;
-font-weight:normal;
-position:absolute;
-pointer-events:none;
-left:5px;
-top:10px;
-transition:0.2s ease all; 
-}
 
-input:focus ~ label, input:valid ~ label 		{
+input.input-material ~ label {
+    color: #aaa;
+    position: absolute;
+    top: 14px;
+    left: 0;
+    cursor: text;
+    transition: all 0.2s;
+    font-weight: 300;
+  }
+  
+
+input:focus ~ label, input:valid ~ label {
 top:-20px;
 font-size:14px;
 color:#385777;
