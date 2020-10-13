@@ -9,10 +9,10 @@ RSpec.describe VideoController, type: :controller do
           get :index
         end
     
-        it '1.)It is expected to assign video instance variable' do
+        it '1.) is expected to assign video instance variable' do
           expect(assigns[:videos]).to eq(Video.all)
         end
-        it "2.)renders the index view" do
+        it "2.) renders the index view" do
             get :index
             expect(response).to render_template("index")
         end
