@@ -1,0 +1,26 @@
+<nav class="side-navbar">
+        <div class="sidebar-header d-flex align-items-center">
+            <div class="avatar"><img src="https://s.gravatar.com/avatar/ea8be90cf21a6f11a0e5a1cd9b9ebc47?s=80" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="title">
+            <h1 class="h4">
+                <%= current_user.username %> 
+            </h1>
+            <p><%= current_user.role %> </p>
+            </div>
+        </div>
+        <span class="heading">Main</span>
+        <ul class="list-unstyled">
+            <li>
+                <%= link_to index_announcement_path do %>
+                    <i class="fa fa-home"></i>Home
+                <% end %>    
+             </li>
+            <li><a href="managebatch.html"><i class="fa fa-tasks"></i></i>Manage Batch</a></li>
+            <li>
+                <%= link_to index_courses_path do %>
+                    <i class="fa fa-bar-chart"></i>Courses
+                <% end %>  
+            </li>
+            <li><a href="instructors.html"> <i class="fa fa-user"></i></i>Instructors </a></li>
+        </ul>
+</nav>
