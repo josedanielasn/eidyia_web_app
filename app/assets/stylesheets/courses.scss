@@ -1,3 +1,26 @@
 // Place all the styles related to the Courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+/*
+  * ===========================
+  *     COURSES
+  * ===========================
+  */
+
+  .courses-section .card a{
+    font-size: 1rem;
+  }
+
+  .courses-section .card-container{
+    margin-top: 2rem;
+    margin-left: 5rem;
+  }
+
+  .courses-section .card{
+    max-width: 900px;
+  }
+
+  .courses-section .card .row .col img{
+    height: 190px
+  }
