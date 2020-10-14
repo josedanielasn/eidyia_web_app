@@ -1,7 +1,17 @@
 <h1>Edit Program</h1>
 
 <%= form_with model: @program, url: {controller: 'programs', action: 'update'} do |f| %>
-  <%= f.select :course_id, @course.collect { |p| [ p.course_name, p.id ] }, include_blank: "-select course-",class: "dropdown-select" %>
-  <%= f.select :batch_id, @batch.collect { |p| [ p.batch_name, p.id ] }, include_blank: "-select batch-",class: "dropdown-select" %>
+  <div>
+    <%= f.select :course_id, @course.collect { |p| [ p.course_name, p.id ] }, include_blank: "-select course-",class: "dropdown-select" %>
+    <%= f.select :batch_id, @batch.collect { |p| [ p.batch_name, p.id ] }, include_blank: "-select batch-",class: "dropdown-select" %>
+  </div>
+  <div>
+    <span><strong>Instructor:</strong></span>
+    <%= text_field_tag(:query_instructor) %>
+  </div>
+   <div>
+    <span><strong>Students:</strong></span>
+   <%= text_field_tag(:query_student) %>  
+  </div>
   <%= f.submit 'Save Changes' %>
 <% end %>
