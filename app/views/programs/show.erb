@@ -1,0 +1,36 @@
+<h1>Show Program</h1>
+
+<table>
+  <tr>
+    <td><strong>Batch: </strong></td>
+    <td><%=@batch%></td>
+  </tr>
+  <tr>
+    <td><strong>Course: </strong></td>
+    <td><%=@course%></td>
+  </tr>
+  <tr>
+    <td><strong>Instructor: </strong></td>
+    <td>
+      <%if @instructors.empty?%>
+        No intructor assigned
+      <%else%>
+        <%@instructors.each do |inst|%>
+          <li><%=inst.lastname%><li>
+        <% end %>
+     <% end %>
+    </td>
+  </tr>
+</table>
+
+<div>
+  <div><strong>List of Enrolled Students:</strong></div>
+  <table>
+    <% @students.each do |student|%>
+      <tr>
+        <td><%= student.firstname %></td>
+        <td><%= student.lastname %></td>
+      </tr>
+    <% end %>
+  <table>
+</div>
