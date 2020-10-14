@@ -7,11 +7,12 @@
       <th>Batch name</th>
     </thead>
     <% @programs.each do |program|%>
-    <tr>
+    <tr>  
       <td><%= program.id%></td>
       <td><%= program.course.course_name%></td>
       <td><%= program.batch.batch_name%></td>
       <td><%= link_to  "Edit", edit_programs_path(program) %></td>
+       <td><%= link_to  "Show", show_programs_path(program) %></td>
     </tr>
     <% end %>
   </table>
