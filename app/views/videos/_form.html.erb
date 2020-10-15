@@ -31,7 +31,13 @@
     <%= form.text_area :video_description %>
   </div>
 
+  <%= form.select :session_id, @session.collect  { |p|
+ 
+  [ "#{p.session_name}", p.id ] }, 
+  include_blank: "-Select a Session-" %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>

@@ -67,3 +67,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.extend ControllerMacros, :type => :controller
 end
+
+FactoryBot::SyntaxRunner.class_eval do
+  include ActionDispatch::TestProcess
+end
