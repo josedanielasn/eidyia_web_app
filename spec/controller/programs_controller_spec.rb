@@ -91,28 +91,57 @@ RSpec.describe ProgramsController, type: :controller do
 
   describe "PATCH: programs#update" do
     before do
-      post :update, params: params
+      patch :update, params: params
     end
     let(:program) { create(:program) }
-    let(:params) { { id: program.id, program: attributes_for(:program) } }
-    
+    let(:user_student) {create(:user, :generate_user, :student)}
+    let(:user_instructor) {create(:user, :generate_user, :instructor)}
+    let(:params) { { id: program.id, program: program_params, query_student: user_student.email, query_instructor: user_instructor.email} }
+    let(:program_params) {attributes_for(:program)}
     it '15.) is expected to set program instance variable' do
       expect(assigns[:program]).to eq(Program.find(params[:id]))
     end
 
     context "when data is valid" do
-      let(:params) { { id: program.id, program: attributes_for(:program, :edited_program) } }
+      let(:program_params) {attributes_for(:program, :edited_program)}
       it "16.) it is expected to save valid program" do
         is_expected.to redirect_to index_programs_path
       end
     end
 
     context "when data is invalid" do
-      let(:params) { { id: program.id, program: attributes_for(:program, :invalid_program) } }
+      let(:program_params) {attributes_for(:program, :invalid_program)}
       it "17.) it is expected not to save invalid program" do
         is_expected.to render_template(:edit)
       end
     end
-    
+  end
+
+   
+  describe "GET: programs#show" do
+    before do
+      get :show, params: params
+    end
+    let(:params) {{id: create(:program).id}}
+
+    it "18.) it is expected to render show template" do
+      is_expected.to render_template(:show)
+    end
+
+    it '19.) is expected to assign program instance variable' do
+      expect(assigns[:program]).to eq(Program.all.first)
+    end
+
+    it '20.) is expected to assign program instance variable' do
+      expect(assigns[:program].course).to eq(Course.all.first)
+    end
+
+    it '21.) is expected to assign program instance variable' do
+      expect(assigns[:program].batch).to eq(Batch.all.first)
+    end
+
+    it '22.) is expected to assign program instance variable' do
+      expect(assigns[:program].users.empty?).to eq(true)
+    end
   end
 end

@@ -18,6 +18,14 @@ class ProgramsController < ApplicationController
     end
   end
 
+  def show
+    @program = Program.find(params[:id])
+    @batch = @program.batch.batch_name
+    @course = @program.course.course_name
+    @instructors = @program.users.select {|user| user.role == 'instructor'}
+    @students = @program.users.select {|user| user.role == 'student'}
+  end
+
   def edit
     @program = Program.find(params[:id])
     @course = Course.all
@@ -25,7 +33,10 @@ class ProgramsController < ApplicationController
   end
 
   def update
+    @student = User.find_by(email: params[:query_student])
+    @instructor = User.find_by(email: params[:query_instructor])
     @program = Program.find(params[:id])
+    @program.users << [@student, @instructor]
     if @program.update(program_params) 
       redirect_to index_programs_path
     else
@@ -35,6 +46,6 @@ class ProgramsController < ApplicationController
 
   private 
   def program_params
-    params.require(:program).permit(:batch_id, :course_id)
+    params.require(:program).permit(:batch_id, :course_id, users:[])
   end
 end

@@ -1,4 +1,10 @@
 FactoryBot.define do
+  sequence(:firstname) { |i| "#{i.to_s}firstname" }
+  sequence(:lastname) { |i| "#{i.to_s}lastname" }
+  sequence(:username) { |i| "#{i.to_s}username" }
+  sequence(:email) { |i| "#{i.to_s}email@email.com" }
+  sequence(:password) { |i| "#{i.to_s}password" }
+
   factory :user do
     firstname { 'firstname1' }
     lastname  { 'lastname1' }
@@ -8,6 +14,14 @@ FactoryBot.define do
 
     trait :admin do 
       role {0}
+    end
+
+    trait :instructor do 
+      role {1}
+    end
+
+    trait :student do 
+      role {2}
     end
 
     trait :same_username do
@@ -21,6 +35,14 @@ FactoryBot.define do
       email {'email2@yahoo.com'}
       role {0}
       password {'password1234'}
+    end
+
+    trait :generate_user do
+      firstname { FactoryBot.generate(:firstname) }
+      lastname { FactoryBot.generate(:lastname) }
+      username { FactoryBot.generate(:username) }
+      email { FactoryBot.generate(:email) } 
+      password { FactoryBot.generate(:password) }
     end
 
     factory :another_user_same_username,   traits: [:another_uniq_user, :same_username, :admin] 
