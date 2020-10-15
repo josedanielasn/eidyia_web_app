@@ -43,10 +43,5 @@ Rails.application.routes.draw do
   get '/program/:id/edit'=> 'programs#edit', as: 'edit_programs'
   patch '/program/:id/update'=> 'programs#update', as:'update_programs'
 
-# #User_program 
-#   get '/user_program', to: 'user_programs#index', as: 'index_user_programs'
-#   get '/user_program/new' => 'user_programs#new', as: 'new_user_programs'
-#   post '/user_program/create', to: 'user_programs#create', as: 'create_user_programs'
-#   get '/user_program/:id/edit', to: 'prouser_programsgrams#edit', as: 'edit_user_programs'
-#   patch '/user_program/:id/update', to: 'user_programs#update', as:'update_user_programs'
+end
 
