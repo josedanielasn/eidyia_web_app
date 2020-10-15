@@ -29,7 +29,6 @@ class SessionController < ApplicationController
     def edit
        @session = Session.find_by(session_params)
        @program = Program.all   
-      # byebug   
        @get_program = @session.program.id
     
     end
