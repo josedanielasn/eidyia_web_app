@@ -1,0 +1,18 @@
+<h1>Index</h1>
+
+  <table>
+    <thead>
+      <th>Program id</th>
+      <th>Course name</th>
+      <th>Batch name</th>
+    </thead>
+    <% @programs.each do |program|%>
+    <tr>
+      <td><%= program.id%></td>
+      <td><%= program.course.course_name%></td>
+      <td><%= program.batch.batch_name%></td>
+      <td><%= link_to  "Edit", edit_programs_path(program) %></td>
+    </tr>
+    <% end %>
+  </table>
+

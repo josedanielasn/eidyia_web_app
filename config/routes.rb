@@ -36,4 +36,11 @@ Rails.application.routes.draw do
  delete '/videos/:id'       => 'videos#destroy'
 #video routes end
 
-end
+# Program 
+  get '/program/index', to: 'programs#index', as: 'index_programs'
+  get '/program/new' => 'programs#new', as: 'new_programs'
+  post '/program/create', to: 'programs#create', as: 'create_programs'
+  get '/program/:id/edit', to: 'programs#edit', as: 'edit_programs'
+  patch '/program/:id/update', to: 'programs#update', as:'update_programs'
+
+

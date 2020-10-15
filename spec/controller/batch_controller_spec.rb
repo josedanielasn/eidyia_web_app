@@ -22,11 +22,11 @@ RSpec.describe BatchController, type: :controller do
         context "when initialized" do
           subject(:batch) { Batch.new }
       
-          it "1.) is expected to initialized a new batch" do
+          it "2.) is expected to initialized a new batch" do
             expect(batch).to be_a_new(Batch)
           end
   
-          it '2.) is expected to render a new template' do
+          it '3.) is expected to render a new template' do
               is_expected.to render_template(:new)
           end
         end
@@ -35,14 +35,14 @@ RSpec.describe BatchController, type: :controller do
 
     describe "POST: batch#create" do
         context 'when params is valid' do
-          it '1.) create batch with valid attributes' do
+          it '4.) create batch with valid attributes' do
             batch_params =  {  batch: attributes_for(:batch) } 
             post :create, :params => batch_params
             expect(response).to have_http_status(302)
           end
 
           context 'when params is invalid' do
-            it '1.) should redirect to new page' do
+            it '5.) should redirect to new page' do
               batch_params =  {  batch: attributes_for(:batch, :invalid_batch_name) } 
               post :create, :params => batch_params
               expect(response).to have_http_status(302)
@@ -61,11 +61,11 @@ RSpec.describe BatchController, type: :controller do
         let(:batch) {create(:batch)}
         let(:params) { { id: batch.id} }
   
-        it '1.) is expected to set batch instance variable' do
+        it '6.) is expected to set batch instance variable' do
           expect(assigns[:batch]).to eq(Batch.find(params[:id]))
         end
   
-        it '2.) is expected to render show template' do
+        it '7.) is expected to render show template' do
           is_expected.to render_template(:show)
         end
       end
@@ -82,11 +82,11 @@ RSpec.describe BatchController, type: :controller do
           let(:params) { { id: batch.id } }
 
     
-          it '1.) is expected to set batch instance variable' do
+          it '8.) is expected to set batch instance variable' do
             expect(assigns[:batch]).to eq(Batch.find_by(id: params[:id]))
           end
     
-          it '2.) is expected to render edit template' do
+          it '9.) is expected to render edit template' do
             is_expected.to render_template(:edit)
           end
         end
@@ -101,11 +101,11 @@ RSpec.describe BatchController, type: :controller do
          let(:params) { {id:  batch.id}}
 
             context 'when data is provided is valid' do
-                it '1.) is expected to update batch name' do
+                it '10.) is expected to update batch name' do
                   expect(batch.reload.batch_name).to eq('batch_name')
                 end
 
-                it '2.) is_expected to redirect_to users_path' do
+                it '11.) is_expected to redirect_to users_path' do
                     is_expected.to redirect_to(show_batch_url)
                 end
             end
@@ -113,7 +113,7 @@ RSpec.describe BatchController, type: :controller do
             context 'when params is invalid' do
               let(:invalid_batch)  { { batch: attributes_for(:batch, :invalid_batch_name) }} 
              
-              it '1.) should redirect to edit page' do
+              it '12.) should redirect to edit page' do
                 expect(response).to have_http_status(302)
               end
             end 
