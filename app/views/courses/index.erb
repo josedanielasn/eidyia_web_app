@@ -16,16 +16,21 @@
          
       <section class="courses-section">
                 <div class="card-container">
-                      <div class="card-body text-right mr-5">
-                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn">Add New </button>
-                            <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-                              <div role="document" class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h4 id="exampleModalLabel" class="modal-title">Add a course</h4>
-                                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                                  </div>
-                                  <div class="modal-body">
+                    <div class="jumbotron">
+                        <h1 class="display-4">Manage Courses</h1>
+                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                        <hr class="my-4">
+                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                        <div class="card-body text-left">
+                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Add a course</button>
+                          <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                            <div role="document" class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 id="exampleModalLabel" class="modal-title">Add a Course</h4>
+                                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                                </div>
+                                <div class="modal-body">
                                     <%= form_with model: @course, url: {controller: 'courses', action: 'create'} do |f|%>                            
                                        
                                         <div class="form-group">
@@ -37,11 +42,28 @@
                                   <div class="modal-footer">
                                     <%= f.submit "Add", class: "btn btn-primary"%>   
                                   </div> 
-                                  <%end%>
+                                   <%end%>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <%# <div class="card-body text-right mr-5">
+                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn">Add New </button>
+                            <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                              <div role="document" class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 id="exampleModalLabel" class="modal-title">Add a course</h4>
+                                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                                  </div>
+                                  
+                               
                                 </div>
                               </div>
                             </div>
-                      </div>
+                      </div> %>
                    
                     <% @courses.each do |course|%>
                           <div class="card mb-3" >
@@ -72,7 +94,7 @@
                             </div>
                     <% end %>
                 </div>
-                 </div>
-
-      </section>
+       </section>
+       <%= render partial: 'shared/footer' if current_user %>       
+      </div>
 </div>

@@ -2,7 +2,7 @@
 <div class="page-content d-flex align-items-stretch"> 
      <%= render partial: 'shared/sidebar'  %>
     <div class="content-inner">
-               <header class="page-header">
+            <header class="page-header">
                    <div class="container-fluid">
                     <h2 class="no-margin-bottom">Dashboard > Courses</h2>
                   </div>
@@ -33,6 +33,7 @@
                 </div>
               </div>
             </div>
-        </section>
-  </div>
+      </section>
+      <%= render partial: 'shared/footer' if current_user %>       
+    </div> 
 </div>
