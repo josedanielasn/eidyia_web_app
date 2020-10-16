@@ -25,11 +25,13 @@
     height: 250px
   }
 
-  .card-body .btn{
+  .jumbotron .btn,
+  .form-horizontal .btn{
     margin-right: 4rem;;
     background-color:#385777;
     color: #fff;
-    width: 15%;
+    width: 20%;
+    border: none;
   }
 
   .modal-footer .btn{
@@ -38,17 +40,23 @@
     width: 20%
   }
 
-  
-  .card-body .btn:hover{
+
+  .jumbotron .btn:hover,
+  .form-horizontal .btn:hover{
     color: #fff;
-    border: 1px solid #000;
+    border: none;
   }
 
   .modal-footer .btn:hover{
     background-color:#385777;
     color: #fff;
-    border: 1px solid #000;
+    border: none;
   }
+
+  .jumbotron {
+    max-width: 900px !important;
+  }
+
 
 
 
