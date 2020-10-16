@@ -1,7 +1,21 @@
-<h1> Batch Index</h1>
- 
- <%= button_to  "Add Batch",new_batch_path, :class => "btn btn-primary btn-md",method: :get%>   
-    <% @batch.each do |batch| %>
-        <li><%= link_to batch.batch_name, show_batch_url(batch)%></li>
-    <%end%>
+
+<div class="page-content d-flex align-items-stretch"> 
+     <%= render partial: 'shared/sidebar'  %>
+    <div class="content-inner">
+               <header class="page-header">
+                   <div class="container-fluid">
+                    <h2 class="no-margin-bottom">Dashboard > Batch</h2>
+                  </div>
+            </header>  
+      <section class="courses-section">
+            <h1> Batch Index</h1>
+            
+            <%= button_to  "Add Batch",new_batch_path, :class => "btn btn-primary btn-md",method: :get%>   
+                <% @batch.each do |batch| %>
+                    <li><%= link_to batch.batch_name, show_batch_url(batch)%></li>
+                <%end%>
+
+                </div>
+        </section>
+</div>
     
