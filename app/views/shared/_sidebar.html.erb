@@ -10,13 +10,24 @@
         </div>
         <span class="heading">Main</span>
         <ul class="list-unstyled">
-            <li>
-                <%= link_to index_announcement_path do %>
+            <li class="<%= active_class(index_announcement_path) %>">
+                <%= link_to index_announcement_path  do %>
                     <i class="fa fa-home"></i>Home
                 <% end %>    
              </li>
-            <li><a href="managebatch.html"><i class="fa fa-tasks"></i></i>Manage Batch</a></li>
-            <li>
+                <li ><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse">
+                    <i class="fa fa-tasks"></i>Manage Batch</a>
+                    <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                      <li><a href="managebatch.html"><i class="fa fa-users"></i>Students</a></li>
+                      <li ><%= link_to batch_index_path do %>
+                           <i class="fa fa-columns"></i></i>Batch
+                      <% end %> </li> 
+                     <li><%= link_to new_session_path do %>
+                            <i class="fa fa-bookmark"></i></i>Session
+                         <% end %></li> 
+                    </ul>
+            </li> 
+            <li class="<%= active_class(index_courses_path) %>">
                 <%= link_to index_courses_path do %>
                     <i class="fa fa-bar-chart"></i>Courses
                 <% end %>  
