@@ -1,34 +1,29 @@
+<div class="content-inner">
+    <header class="page-header">
+          <div class="container-fluid">
+                <h2 class="no-margin-bottom">Dashboard > Courses > sessions</h2>
+          </div>
+    </header>   
 
-<div class="page-content d-flex align-items-stretch"> 
-     <%= render partial: 'shared/sidebar'  %>
-    <div class="content-inner">
-               <header class="page-header">
-                   <div class="container-fluid">
-                    <h2 class="no-margin-bottom">Dashboard > Courses > sessions</h2>
-                  </div>
-            </header>   
+    <section class="videos-section">
+          <div class="cards">
+            <% @sessions.each do |session|%>
+                <div class="card">
+                      <div class="card__image-holder">
+                        <img class="card__image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
+                      </div>
+                      <div class="card-title">
 
-        <section class="videos-section">
-        <%# <h1> Index Page</h1>
-        <%= button_to  "Add New Session",new_session_path,method: :get%>  
-             <div class="cards">
-
-                <% @sessions.each do |session|%>
-                    <div class="card">
-                          <div class="card__image-holder">
-                            <img class="card__image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
-                          </div>
-                          <div class="card-title">
-                            <a href="room.html" class="toggle-play btn">
-                                <i class="fa fa-play"></i>
-                            </a>
-                            <h2><%= link_to  session.session_name, show_session_url(session)%> </h2>
-                                <small class="text-muted">Time: M-W-F(7:00PM -  9:00PM)</small>
-                          </div>
-                        
-                        </div>
-                    <% end %>
-            </div>
-        </section>
-    </div>  
-</div>
+                      <%= link_to videos_path, class:"toggle-play btn" do %>
+                        <i class="fa fa-play"></i></i>
+                        <% end %></li> 
+                      
+                        <h2><%= link_to  session.session_name, show_session_url(session)%> </h2>
+                            <small class="text-muted">Time: M-W-F(7:00PM -  9:00PM)</small>
+                      </div>
+                    
+                    </div>
+                <% end %>
+        </div>
+    </section>
+</div>  

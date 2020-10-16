@@ -1,100 +1,75 @@
-<div class="page-content d-flex align-items-stretch"> 
-     <%= render partial: 'shared/sidebar'  %>
-    <div class="content-inner">
-               <header class="page-header">
-                   <div class="container-fluid">
-                    <h2 class="no-margin-bottom">Dashboard > Courses</h2>
-                  </div>
-            </header>   
-          <%# <%= form_with model: @course, url: {controller: 'courses', action: 'create'} do |f|%>
-              <%# <span> Course Name </span>
-              <%= f.text_field :course_name %> 
-              <%# <div>
-                <%= f.submit "Add Course"%>
-              <%# </div>
-            <% end %> 
-         
-      <section class="courses-section">
-                <div class="card-container">
-                    <div class="jumbotron">
-                        <h1 class="display-4">Manage Courses</h1>
-                        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                        <hr class="my-4">
-                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                        <div class="card-body text-left">
-                          <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Add a course</button>
-                          <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-                            <div role="document" class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 id="exampleModalLabel" class="modal-title">Add a Course</h4>
-                                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                                </div>
-                                <div class="modal-body">
-                                    <%= form_with model: @course, url: {controller: 'courses', action: 'create'} do |f|%>                            
-                                       
-                                        <div class="form-group">
-                                            <label> Course Name</label>
-                                            <%= f.text_field :course_name,placeholder: "Enter course name",class: "form-control"%> 
-                                        </div>
-                                    </div>
-                                
-                                  <div class="modal-footer">
-                                    <%= f.submit "Add", class: "btn btn-primary"%>   
-                                  </div> 
-                                   <%end%>
-                              </div>
+<div class="content-inner">
+  <header class="page-header">
+          <div class="container-fluid">
+          <h2 class="no-margin-bottom">Dashboard > Courses</h2>
+        </div>
+  </header>   
+  
+  <section class="courses-section">
+            <div class="card-container">
+                <div class="jumbotron">
+                    <h1 class="display-4">Manage Courses</h1>
+                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <hr class="my-4">
+                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                    <div class="card-body text-left">
+                      <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Add a course</button>
+                      <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                        <div role="document" class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h4 id="exampleModalLabel" class="modal-title">Add a Course</h4>
+                              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                             </div>
+                            <div class="modal-body">
+                                <%= form_with model: @course, url: {controller: 'courses', action: 'create'} do |f|%>                            
+                                    
+                                    <div class="form-group">
+                                        <label> Course Name</label>
+                                        <%= f.text_field :course_name,placeholder: "Enter course name",class: "form-control"%> 
+                                    </div>
+                                </div>
+                            
+                              <div class="modal-footer">
+                                <%= f.submit "Add", class: "btn btn-primary"%>   
+                              </div> 
+                                <%end%>
                           </div>
                         </div>
                       </div>
+                    </div>
+                  </div>
 
-                      <%# <div class="card-body text-right mr-5">
-                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn">Add New </button>
-                            <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-                              <div role="document" class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h4 id="exampleModalLabel" class="modal-title">Add a course</h4>
-                                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                                  </div>
-                                  
-                               
-                                </div>
+                <% @courses.each do |course|%>
+                      <div class="card mb-3" >
+                          <div class="row no-gutters">
+                            <div class="col-md-4">
+                              <img src="https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img" alt="...">
+
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body">
+                              
+                                <%= link_to session_index_path, class: "card-link" do %>
+                                      <h5 class="card-title"> <%= course.course_name%></h5>
+                                <%end%>
+                              
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+                                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria</p>
+                                <%if Program.find_by(course_id: course.id).nil? %>  
+                                        <p class="card-text"><small class="text-muted"><%= "Batch: none" %></small></p>
+                                <%else%>
+                                        <p class="card-text"><small class="text-muted"><%= "Batch: #{Program.find_by(course_id: course.id).batch.batch_name}" %></small></p>
+                                <%end%>
+                                <p class="card-text"><small class="text-muted">
+                                      <%= link_to  "Edit Course", edit_courses_path(course) %></small></p>                                
                               </div>
                             </div>
-                      </div> %>
-                   
-                    <% @courses.each do |course|%>
-                          <div class="card mb-3" >
-                              <div class="row no-gutters">
-                                <div class="col-md-4">
-                                  <img src="https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img" alt="...">
+                          </div>               
+                        </div>
+                <% end %>
+            </div>
+    </section>
+    <%= render partial: 'shared/footer' if current_user %>       
+  </div>
 
-                                </div>
-                                <div class="col-md-8">
-                                  <div class="card-body">
-                                  
-                                    <%= link_to session_index_path, class: "card-link" do %>
-                                         <h5 class="card-title"> <%= course.course_name%></h5>
-                                    <%end%>
-                                 
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
-                                                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria</p>
-                                    <%if Program.find_by(course_id: course.id).nil? %>  
-                                           <p class="card-text"><small class="text-muted"><%= "Batch: none" %></small></p>
-                                    <%else%>
-                                           <p class="card-text"><small class="text-muted"><%= "Batch: #{Program.find_by(course_id: course.id).batch.batch_name}" %></small></p>
-                                    <%end%>
-                                    <p class="card-text"><small class="text-muted">
-                                          <%= link_to  "Edit Course", edit_courses_path(course) %></small></p>                                
-                                  </div>
-                                </div>
-                              </div>               
-                            </div>
-                    <% end %>
-                </div>
-       </section>
-       <%= render partial: 'shared/footer' if current_user %>       
-      </div>
-</div>
