@@ -15,7 +15,7 @@
  */
 
  @import "bootstrap/scss/bootstrap";
-
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"');
 
  /*
 * ============================
@@ -24,6 +24,7 @@
 */
 body {
     overflow-x: hidden;
+    font-family: 'Poppins', sans-serif !important;
   }
   
 
