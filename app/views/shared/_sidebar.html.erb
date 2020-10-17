@@ -16,9 +16,11 @@
                 <% end %>    
              </li>
                 <li ><a href="#dropdown" aria-expanded="false" data-toggle="collapse" >
-                    <i class="fa fa-tasks"></i>Manage Batch</a>
+                    <i class="fa fa-tasks"></i> Batch</a>
                     <ul id="dropdown" class="collapse list-unstyled ">
-                      <li><a href="managebatch.html"><i class="fa fa-users"></i>Students</a></li>
+                      <li> <%= link_to index_courses_path do %>
+                            <i class="fa fa-bar-chart"></i>Course
+                        <% end %>  </li>
                       <li ><%= link_to batch_index_path do %>
                            <i class="fa fa-columns"></i></i>Batch
                       <% end %> </li> 
@@ -27,11 +29,12 @@
                          <% end %></li> 
                     </ul>
             </li> 
-            <li class="<%= active_class(index_courses_path) %>">
-                <%= link_to index_courses_path do %>
-                    <i class="fa fa-bar-chart"></i>Programs
-                <% end %>  
-            </li>
+            <li class="<%= active_class(index_programs_path) %>"> 
+            <%= link_to index_programs_path do %>
+                       <i class="fa fa-address-book"></i></i>Program
+            <% end %></li> 
             <li><a href="instructors.html"> <i class="fa fa-user"></i></i>Instructors </a></li>
+            <li><a href="managebatch.html"><i class="fa fa-users"></i></i></i>Students</a></li>
+
         </ul>
 </nav>
