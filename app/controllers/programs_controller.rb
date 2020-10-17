@@ -1,6 +1,9 @@
 class ProgramsController < ApplicationController
   def index
     @programs = Program.all
+    @program_new = Program.new
+    @course = Course.all
+    @batch = Batch.all
   end
 
   def new
