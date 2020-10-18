@@ -13,19 +13,23 @@ FactoryBot.define do
     password {'password1234'}
 
     trait :admin do 
-      role {0}
+      role {'admin'}
     end
 
     trait :instructor do 
-      role {1}
+      role {'instructor'}
     end
 
     trait :student do 
-      role {2}
+      role {'student'}
     end
 
     trait :same_username do
       username {'username1'}
+    end
+
+    trait :invalid_firstname do
+      username {'1'}
     end
 
     trait :another_uniq_user do
@@ -33,7 +37,7 @@ FactoryBot.define do
       lastname  { 'lastname2' }
       username  { 'username2' }
       email {'email2@yahoo.com'}
-      role {0}
+      role {'admin'}
       password {'password1234'}
     end
 
