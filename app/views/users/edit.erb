@@ -1,0 +1,33 @@
+<h1> Edit instructor <h1>
+<%= link_to  "Back", show_instructors_path() %>
+  <%= form_with model: @user, url: update_users_path do |f| %>
+  
+  <table>
+    <tr>
+      <td><strong>Firstname:</strong></td>
+      <td><%= f.text_field :firstname %></td>
+    </tr>
+    <tr>
+      <td><strong>Lastname:</strong></td>
+      <td><%= f.text_field :lastname %></td>
+    </tr>
+    <tr>
+      <td><strong>Username:</strong></td>
+      <td><%= f.text_field :username %></td>
+    </tr>
+    <tr>
+      <td><strong>Role:</strong></td>
+      <td><%= f.select :role, User.roles { |p| [ p.keys, p.values ] }, include_blank: true %></td>
+    </tr>
+    <tr>
+      <td><strong>email:</strong></td>
+      <td><%= f.text_field :email %></td>
+    </tr>
+    <tr>
+      <td><strong>password:</strong></td>
+      <td><%= f.text_field :password %></td>
+    </tr>
+  </table>
+
+  <%= f.submit 'Edit instructor'%>
+ <% end %>

@@ -1,0 +1,15 @@
+<h1> Index Users </h1>
+<%= link_to  "Add new user", new_users_path %>
+<%@users.select{|x| x.role ==='admin'}.each do |user|%>
+  <table>
+    <tr>
+      <td><%= user.firstname %></td>
+      <td><%= user.lastname %></td>
+       <td><%= link_to  "Show", show_users_path(user) %></td>
+       <td><%= link_to  "edit", edit_users_path(user) %></td>
+    </tr>
+  </table>
+  
+<% end %>
+
+

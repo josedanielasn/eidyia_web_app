@@ -1,0 +1,32 @@
+<h1> Show user </h1>
+<%= link_to  "List of users", index_users_path %>
+<table>
+  <tr>
+    <td><strong>Firstname:</strong></td>
+    <td><%= @user.firstname%></td>
+  </tr>
+   <tr>
+    <td><strong>Lastname:</strong></td>
+    <td><%= @user.lastname%></td>
+  </tr>
+   <tr>
+    <td><strong>Username:</strong></td>
+    <td><%= @user.username%></td>
+  </tr>
+  <tr>
+    <td><strong>email:</strong></td>
+    <td><%= @user.email%></td>
+  </tr>
+  <tr>
+    <td><strong>Programs:</strong></td>
+    <td>
+      <%if @user.programs.empty?%>
+          No Programs Yet
+      <%else%>
+        <%@user.programs.each do |program|%>
+          <li><%= program.course.course_name%>--<%= program.batch.batch_name%></li>  
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+</table>
