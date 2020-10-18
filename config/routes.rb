@@ -3,19 +3,19 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 # Courses
-  get '/course/index'=> 'courses#index', as: 'index_courses'
-  get '/course/new' => 'courses#new', as: 'new_courses'
-  post '/course/create'=> 'courses#create', as: 'create_courses'
-  get '/course/:id/edit'=> 'courses#edit', as: 'edit_courses'
-  patch '/course/:id/update'=> 'courses#update', as:'update_courses'
+ get '/course/index'=> 'courses#index', as: 'index_courses'
+ get '/course/new' => 'courses#new', as: 'new_courses'
+ post '/course/create'=> 'courses#create', as: 'create_courses'
+ get '/course/:id/edit'=> 'courses#edit', as: 'edit_courses'
+ patch '/course/:id/update'=> 'courses#update', as:'update_courses'
     
 #batch
-  get '/batch'          => 'batch#index',  as: 'batch_index'
-  get '/batch/new'      => 'batch#new',    as: 'new_batch'
-  post '/batch'         => 'batch#create', as: 'create_batch'
-  get '/batch/:id'      => 'batch#show',   as: 'show_batch'
-  get '/batch/:id/edit' => 'batch#edit',   as: 'edit_batch'
-  put '/batch/:id'      => 'batch#update', as: 'update_batch'
+ get '/batch'          => 'batch#index',  as: 'batch_index'
+ get '/batch/new'      => 'batch#new',    as: 'new_batch'
+ post '/batch'         => 'batch#create', as: 'create_batch'
+ get '/batch/:id'      => 'batch#show',   as: 'show_batch'
+ get '/batch/:id/edit' => 'batch#edit',   as: 'edit_batch'
+ put '/batch/:id'      => 'batch#update', as: 'update_batch'
 
 #session 
   get '/session' => 'session#index', as: 'session_index'
@@ -36,12 +36,22 @@ Rails.application.routes.draw do
 #video routes end
 
 #Program 
-  get '/program/index' =>  'programs#index', as: 'index_programs'
-  get '/program/new' => 'programs#new', as: 'new_programs'
-  post '/program/create'=>  'programs#create', as: 'create_programs'
-  get '/program/:id' => 'programs#show', as: 'show_programs'
-  get '/program/:id/edit'=> 'programs#edit', as: 'edit_programs'
-  patch '/program/:id/update'=> 'programs#update', as:'update_programs'
+ get '/program/index' =>  'programs#index', as: 'index_programs'
+ get '/program/new' => 'programs#new', as: 'new_programs'
+ post '/program/create'=>  'programs#create', as: 'create_programs'
+ get '/program/:id' => 'programs#show', as: 'show_programs'
+ get '/program/:id/edit'=> 'programs#edit', as: 'edit_programs'
+ patch '/program/:id/update'=> 'programs#update', as:'update_programs'
+
+
+#user
+get '/user/index' =>  'users#index', as: 'index_users'
+get '/user/new' => 'users#new', as: 'new_users'
+post '/user/create'=>  'users#create', as: 'create_users'
+get '/user/:id' => 'users#show', as: 'show_users'
+get '/user/:id/edit'=> 'users#edit', as: 'edit_users'
+patch '/user/:id/update'=> 'users#update', as:'update_users'
+
 
 end
 
