@@ -11,5 +11,5 @@ class User < ApplicationRecord
   validates :lastname, presence: true, length: {minimum:2, maximum:20}
   validates :username, presence: true, uniqueness: true, length: {minimum:3, maximum:30}
   validates :role, presence: true
-  enum role: {admin: 0, instructor: 1, student: 2}
+  enum role: [:admin, :instructor, :student]
 end
