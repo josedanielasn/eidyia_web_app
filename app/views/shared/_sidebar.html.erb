@@ -15,16 +15,16 @@
                     <i class="fa fa-home"></i>Home
                 <% end %>    
              </li>
-                <li ><a href="#dropdown" aria-expanded="false" data-toggle="collapse" >
-                    <i class="fa fa-tasks"></i> Batch</a>
+                <li id="drop-down"><a  href="#dropdown" aria-expanded="false" data-toggle="collapse" >
+                    <i class="fa fa-tasks"></i> Dashboard</a>
                     <ul id="dropdown" class="collapse list-unstyled ">
-                      <li> <%= link_to index_courses_path do %>
+                      <li class="<%= active_class(index_courses_path) %>"> <%= link_to index_courses_path do %>
                             <i class="fa fa-bar-chart"></i>Course
                         <% end %>  </li>
-                      <li ><%= link_to batch_index_path do %>
+                      <li  class="<%= active_class(batch_index_path) %>"><%= link_to batch_index_path do %>
                            <i class="fa fa-columns"></i></i>Batch
                       <% end %> </li> 
-                     <li><%= link_to new_session_path do %>
+                     <li class="<%= active_class(new_session_path) %>"><%= link_to new_session_path do %>
                             <i class="fa fa-bookmark"></i></i>Session
                          <% end %></li> 
                     </ul>
@@ -33,8 +33,12 @@
             <%= link_to index_programs_path do %>
                        <i class="fa fa-address-book"></i></i>Program
             <% end %></li> 
-            <li><a href="instructors.html"> <i class="fa fa-user"></i></i>Instructors </a></li>
-            <li><a href="managebatch.html"><i class="fa fa-users"></i></i></i>Students</a></li>
+           <li data-role="instructor" ><%= link_to index_users_path do %>
+                            <i class="fa fa-user"></i></i>Instructors
+            <% end %></li> 
+            <li data-role="student" ><%= link_to index_users_path do %>
+                            <i class="fa fa-users"></i></i>Students
+            <% end %></li> 
 
         </ul>
 </nav>
