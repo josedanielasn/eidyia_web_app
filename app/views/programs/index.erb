@@ -62,15 +62,7 @@
                                         <th>Show Details</th>
                                       </tr>
                                   </thead>
-                                  <tbody>
-                                    <%# <% @programs.each do |program|%>
-                                      <%# <tr>
-                                          <th scope="row"><%= program.id%>
-                                          <%# <td><%= program.course.course_name %>
-                                          <%# <td><%= program.batch.batch_name%>
-                                          <%# <td><%= link_to  "Edit", edit_programs_path(program) %> </td>
-                                      <%# </tr>
-                                    <% end %> 
+                                  <tbody>                             
                                     <%= render @programs %>
                                   </tbody>
                               </table>   
