@@ -1,0 +1,48 @@
+/*
+  * ===========================
+  *     MAIN NAVBAR
+  * ===========================
+  */
+  nav.navbar {
+    background: #385777;
+
+    color: #fff;
+    position: relative;
+    border-radius: 0;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    padding-left: 0;
+    padding-right: 0;
+   
+  }
+   
+  nav.navbar .navbar-holder {
+    width: 100%;
+  }
+  
+  nav.navbar a {
+    color: inherit;
+  }
+  
+  nav.navbar .container-fluid {
+    width: 100%;
+  }
+   
+
+  nav.navbar .nav-link {
+    position: relative;
+    font-size: 20px;
+  }
+  
+  
+  nav.navbar .nav-link.logout i {
+    margin-left: 10px;
+  }
+  
+  nav.navbar .nav-menu {
+    margin-bottom: 0;
+  }    
+  .navbar-header span{
+    font-size: 2rem;
+    font-weight: bold;
+  }

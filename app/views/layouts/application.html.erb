@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EidyaWebAppGit</title>
+    <title>Eidya Web App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+  crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <!-- Font Awesome CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      
   </head>
 
   <body>
-    <%= yield %>
+      <div class="page">
+          <%= render partial: 'shared/navbar' if current_user %>       
+          <div class="page-content d-flex align-items-stretch"> 
+              <%= render partial: 'shared/sidebar'  %>
+                  <%= yield %>
+          </div>
+      </div>
   </body>
 </html>
