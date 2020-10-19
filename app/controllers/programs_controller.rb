@@ -14,11 +14,15 @@ class ProgramsController < ApplicationController
 
   def create
     @program = Program.new(program_params)
-    if @program.save 
-      redirect_to index_programs_path
-    else
-      render 'new'
-    end
+      respond_to do |format|
+        if @program.save 
+          format.js
+          # format.json { render json: {}, status: :ok}
+          format.html { redirect_to index_programs_path}
+        else
+          render 'new'
+        end
+      end
   end
 
   def show
