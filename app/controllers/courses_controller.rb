@@ -1,8 +1,8 @@
 class CoursesController < ApplicationController
 
-  def index
-    @courses = Course.all
-    @course = Course.new
+  def index 
+      @courses = Course.all
+      @course = Course.new  
   end
 
   def create
@@ -11,7 +11,6 @@ class CoursesController < ApplicationController
       if @course.save
         format.js
         format.html { redirect_to index_courses_path}
-
       else
         render 'index'
       end

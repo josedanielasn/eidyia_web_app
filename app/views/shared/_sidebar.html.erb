@@ -9,13 +9,13 @@
             </div>
         </div>
         <span class="heading">Main</span>
-        <ul class="list-unstyled">
+        <ul class="list-unstyled" id="side-nav">
             <li class="<%= active_class(index_announcement_path) %>">
                 <%= link_to index_announcement_path  do %>
                     <i class="fa fa-home"></i>Home
                 <% end %>    
              </li>
-                <li id="drop-down"><a  href="#dropdown" aria-expanded="false" data-toggle="collapse" >
+            <li id="drop-down"><a  href="#dropdown" aria-expanded="false" data-toggle="collapse" >
                     <i class="fa fa-tasks"></i> Dashboard</a>
                     <ul id="dropdown" class="collapse list-unstyled ">
                       <li class="<%= active_class(index_courses_path) %>"> <%= link_to index_courses_path do %>
@@ -24,21 +24,23 @@
                       <li  class="<%= active_class(batch_index_path) %>"><%= link_to batch_index_path do %>
                            <i class="fa fa-columns"></i></i>Batch
                       <% end %> </li> 
-                     <li class="<%= active_class(new_session_path) %>"><%= link_to new_session_path() do %>
-                            <i class="fa fa-bookmark"></i></i>Session
+                     <li class="<%= active_class(new_session_path) %>"><%= link_to new_session_path do %>
+                            <i class="fa fa-bookmark"></i></i>Create Session
                          <% end %></li> 
+                    <li class="<%= active_class(new_video_path) %>"><%= link_to new_video_path do %>
+                        <i class="fa fa-bookmark"></i></i>Upload Videos
+                        <% end %></li> 
                     </ul>
             </li> 
             <li class="<%= active_class(index_programs_path) %>"> 
             <%= link_to index_programs_path do %>
                        <i class="fa fa-address-book"></i></i>Program
             <% end %></li> 
-           <li data-role="instructor" ><%= link_to index_users_path(user_identity:'instructor') do %>
+           <li><%= link_to index_users_path do %>
                             <i class="fa fa-user"></i></i>Instructors
             <% end %></li> 
-            <li data-role="student" ><%= link_to index_users_path(user_identity: 'student') do %>
+            <li><%= link_to index_users_path do %>
                             <i class="fa fa-users"></i></i>Students
             <% end %></li> 
-
         </ul>
 </nav>
