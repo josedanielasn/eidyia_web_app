@@ -29,10 +29,10 @@
                                <%= render 'shared/links' %>                   
                         </ul>                     
                     </li> 
-                   <li><%= link_to index_users_path(user_identity: "instructor") do %>
+                   <li class="<%= active_class(index_users_path(user_identity: "instructor")) %>"><%= link_to index_users_path(user_identity: "instructor") do %>
                                     <i class="fa fa-user"></i></i>Instructors
                     <% end %></li> 
-                    <li><%= link_to index_users_path(user_identity: "student") do %>
+                    <li class="<%= active_class(index_users_path(user_identity: "student")) %>"> <%= link_to index_users_path(user_identity: "student") do %>
                                     <i class="fa fa-users"></i></i>Students
                     <% end %></li> 
               <%else%>

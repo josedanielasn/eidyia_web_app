@@ -1,33 +1,63 @@
-<h1> Edit instructor <h1>
-<%= link_to  "Back", show_instructors_path() %>
-  <%= form_with model: @user, url: update_users_path do |f| %>
-  
-  <table>
-    <tr>
-      <td><strong>Firstname:</strong></td>
-      <td><%= f.text_field :firstname %></td>
-    </tr>
-    <tr>
-      <td><strong>Lastname:</strong></td>
-      <td><%= f.text_field :lastname %></td>
-    </tr>
-    <tr>
-      <td><strong>Username:</strong></td>
-      <td><%= f.text_field :username %></td>
-    </tr>
-    <tr>
-      <td><strong>Role:</strong></td>
-      <td><%= f.select :role, User.roles { |p| [ p.keys, p.values ] }, include_blank: true %></td>
-    </tr>
-    <tr>
-      <td><strong>email:</strong></td>
-      <td><%= f.text_field :email %></td>
-    </tr>
-    <tr>
-      <td><strong>password:</strong></td>
-      <td><%= f.text_field :password %></td>
-    </tr>
-  </table>
-
-  <%= f.submit 'Edit instructor'%>
- <% end %>
+<div class="content-inner">
+        <header class="page-header">
+            <div class="container-fluid">
+            <h2 class="no-margin-bottom"><%= link_to "Dashboard", index_announcement_path  %> / <%= link_to "User", index_users_path  %></h2>
+            </div>
+        </header>  
+      <section class="user-section">
+      <div class="col-lg-6 mx-auto">
+            <div class="card">
+                  <div class="card-header d-flex align-items-center">
+                    <h2 class="h4">Edit <%= @user.role %> </h2>
+                  </div>
+              <div class="card-body">
+              <%= form_with model: @user, url: update_users_path,  :class => "form-horizontal"  do |f| %>
+                <div class="form-group row">
+                        <label class="col-sm-4 form-control-label"> Firstname: </label>
+                        <div class="col-sm-8">
+                            <%= f.text_field :firstname, class: "form-control" %>
+                      </div>
+                 </div>     
+                  <div class="form-group row">
+                        <label class="col-sm-4 form-control-label"> Lastname: </label>
+                        <div class="col-sm-8">
+                            <%= f.text_field :lastname, class: "form-control" %>
+                      </div>
+                 </div>     
+                   <div class="form-group row">
+                        <label class="col-sm-4 form-control-label"> Username: </label>
+                        <div class="col-sm-8">
+                            <%= f.text_field :username, class: "form-control" %>
+                      </div>
+                 </div> 
+                 <div class="form-group row">
+                        <label class="col-sm-4 form-control-label"> Role: </label>
+                        <div class="col-sm-8">
+                        <%= f.select :role, User.roles { |p| [ p.keys, p.values ] }, {include_blank: true}, {class:  "form-control"} %>
+                      </div>
+                 </div>     
+                   <div class="form-group row">
+                        <label class="col-sm-4 form-control-label"> Email: </label>
+                        <div class="col-sm-8">
+                            <%= f.text_field :email, class: "form-control" %>
+                       
+                      </div>
+                 </div> 
+                  <div class="form-group row">
+                    <label class="col-sm-4 form-control-label"> Password: </label>
+                    <div class="col-sm-8">
+                        <%= f.password_field :password, class: "form-control" %>
+                    
+                      </div>
+                 </div>   
+                  <div class="form-group row">       
+                        <div class="col-sm-12 mt-2 offset-sm-4">
+                          <%= f.submit "Save ", class: "btn btn-primary"%>
+                        </div>
+                    </div>
+                <% end %>
+          </div>
+        </div>
+      </div>
+ </section>
+ </div>

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :admin_user, except: :show
 
   def index
+    @user = User.new()
     if params[:user_identity] == 'student'
       @users =  User.where(role: 'student')
     elsif params[:user_identity] == 'instructor'
