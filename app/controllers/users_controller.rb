@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def index
     if params[:user_identity] == 'student'
-      @users = User.all.select{|x| x.role =='student'} 
+      @users =  User.where(role: 'student')
     elsif params[:user_identity] == 'instructor'
-      @users = User.all.select{|x| x.role =='instructor'}
+      @users = User.where(role: 'instructor')
     end
   end
 
