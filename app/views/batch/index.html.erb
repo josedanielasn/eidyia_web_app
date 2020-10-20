@@ -21,7 +21,7 @@
                               <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                             </div>
                             <div class="modal-body">
-                                <%= form_with model: @batch, url: {controller: 'batch', action: 'create'} do |f|%>                            
+                                <%= form_with model: @batch, url: {controller: 'batch', action: 'create'}, local: true do |f|%>                            
                                     
                                     <div class="form-group">
                                         <label> Batch Name</label>

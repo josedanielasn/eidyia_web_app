@@ -1,13 +1,13 @@
 <div class="content-inner">
     <header class="page-header">
           <div class="container-fluid">
-                <h2 class="no-margin-bottom">Dashboard / Students</h2>
+                <h2 class="no-margin-bottom"><%= link_to "Dashboard", index_announcement_path  %> / <%= link_to @users.first.role , index_programs_path  %> </h2>
           </div>
     </header> 
           <%# <%= link_to  "Add new user", new_users_path %>   
            <div class="card  mr-5 ml-5 mt-5">
               <div class="card-header d-flex align-items-center">
-                  <h3 > All Students</h3>
+                  <h3 > All <%= @users.first.role %></h3>
               </div>
               <div class="card-body">
                   <div class="table-responsive">                       
