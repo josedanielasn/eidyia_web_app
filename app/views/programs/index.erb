@@ -12,7 +12,9 @@
                     <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
                     <hr class="my-4">
                     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                  
                     <div class="card-body text-left">
+                      <% if current_user.role == 'admin'%>
                         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Add a program</button>
                         <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
                           <div role="document" class="modal-dialog">
@@ -22,7 +24,7 @@
                                 <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                               </div>
                               <div class="modal-body">
-                                  <%= form_with model: @program_new, url: {controller: 'programs', action: 'create'} do |f|%>                            
+                                  <%= form_with model: @program_new, url: {controller: 'programs', action: 'create'},  local: true do |f|%>                            
                                       
                                       <div class="form-group">
                                           <label> Batch Name</label>
@@ -43,7 +45,8 @@
                                   <%end%>
                             </div>
                           </div>
-                        </div>
+                        </div>    
+                    <%end%>
                     </div>
                   </div>
                   
