@@ -78,9 +78,7 @@
                           </thead>
                               <%@users.each do |user|%>                             
                           <tbody>
-                            <%= render partial: 'users/user', collection: @users %>
-
-                            <%# <%= render partial: 'users/user', collection: @user %> 
+                            <%= render partial: 'users/user', collection: @users %> 
                           </tbody>
                           <%end%>
                       </table>   
@@ -88,6 +86,7 @@
           </div>
       </div>
       </section>
+    <%= render partial: 'shared/footer' if current_user %>    
 </div>
 
 
