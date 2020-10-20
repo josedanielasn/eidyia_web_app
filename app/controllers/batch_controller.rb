@@ -1,6 +1,6 @@
 class BatchController < ApplicationController
     before_action :batch_params, only: [ :create, :update, :show, :edit]
-   
+    before_action :admin_user
     def index
       @batches = Batch.all
       @batch = Batch.new
@@ -12,16 +12,13 @@ class BatchController < ApplicationController
 
     def create
         @batch = Batch.new(batch_params)
-        respond_to do |format|
-            if @batch.save
-                 format.js
-                 format.html { redirect_to batch_index_url }
-            else
-                flash[:notice] =  'An error occured while saving'
-                redirect_to new_batch_url    
-
-            end
-        end
+        if @batch.save
+          
+            redirect_to batch_index_url 
+        else
+            flash[:notice] =  'An error occured while saving'
+            redirect_to new_batch_url    
+        end  
     end
     
     def show
@@ -46,6 +43,6 @@ class BatchController < ApplicationController
 
     private
     def batch_params
-        params.permit(:batch_name, :id)
+        params.require(:batch).permit(:batch_name, :id)
     end
 end

@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
-
+  before_action :admin_user
+  
   def index 
       @courses = Course.all
       @course = Course.new  
@@ -7,14 +8,13 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(courses_params)
-    respond_to do |format|
+    
       if @course.save
-        format.js
-        format.html { redirect_to index_courses_path}
+        redirect_to index_courses_path
       else
         render 'index'
       end
-    end 
+ 
   end
 
   def edit
