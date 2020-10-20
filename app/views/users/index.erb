@@ -21,7 +21,7 @@
 
                               </tr>
                           </thead>
-                              <%@users.select{|x| x.role ==='student'}.each do |user|%>                             
+                              <%@users.each do |user|%>                             
                           <tbody>
                             <tr>
                               <th scope="row"><%= user.id%></th>
