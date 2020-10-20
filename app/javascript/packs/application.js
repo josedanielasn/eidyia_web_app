@@ -10,8 +10,6 @@ require("@rails/activestorage").start()
 require("channels")
 require("jquery")
 require("custom/dropdown")
-require("packs/video_manipulation")
-require("packs/reload")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
