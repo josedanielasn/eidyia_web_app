@@ -25,7 +25,8 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to index_users_path
     else
-      render 'new'
+      flash[:notice] =  'An error occured while saving'
+      redirect_to index_users_path
     end
   end
 
@@ -38,7 +39,8 @@ class UsersController < ApplicationController
     if @user.update(params_users)
       redirect_to show_users_path(params[:id])
     else
-      render 'edit'
+      flash[:notice] =  'An error occured while saving'
+      redirect_to index_users_path
     end
   end
 

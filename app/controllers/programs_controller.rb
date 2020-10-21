@@ -17,7 +17,8 @@ class ProgramsController < ApplicationController
         if @program.save 
           redirect_to index_programs_path
         else
-          render 'new'
+          flash[:notice] =  'An error occured while saving'
+          redirect_to index_programs_path
         end
   end
 

@@ -5,6 +5,14 @@
           </div>
     </header>   
       
+    <% if flash[:notice]%>
+          <div class="alert alert-danger" role="alert">
+              <%=  flash[:error] = "An Error occured!"%>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+    <%end%>
     <section class="courses-section">
           <div class="col-lg-6 mx-auto">
             <div class="card">

@@ -12,7 +12,8 @@ class CoursesController < ApplicationController
       if @course.save
         redirect_to index_courses_path
       else
-        render 'index'
+        flash[:notice] =  'An error occured while saving'
+        redirect_to index_courses_path
       end
  
   end
@@ -27,7 +28,8 @@ class CoursesController < ApplicationController
    if @course.update(courses_params)
     redirect_to index_courses_path
    else
-    render 'edit'
+    flash[:notice] =  'An error occured while saving'
+    redirect_to index_courses_path
    end
   end
 

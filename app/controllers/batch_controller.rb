@@ -16,8 +16,8 @@ class BatchController < ApplicationController
           
             redirect_to batch_index_url 
         else
-            flash[:notice] =  'An error occured while saving'
-            redirect_to new_batch_url    
+            flash[:notice] =   @batch.errors.full_messages
+            redirect_to batch_index_url 
         end  
     end
     
@@ -36,7 +36,7 @@ class BatchController < ApplicationController
             @batch.update(batch_params)
             redirect_to show_batch_url
         else
-            flash[:errors] = @user.errors.full_messages 
+            flash[:errors] = @batch.errors.full_messages 
             redirect_to  edit_batch_url  
         end
     end
