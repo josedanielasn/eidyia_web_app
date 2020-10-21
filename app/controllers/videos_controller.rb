@@ -6,11 +6,15 @@ class VideosController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @video.comments.order("created_at DESC")
+    gon.username = current_user.username
   end
 
   def new
     @video = Video.new
     @session = Session.all
+
   end
 
   def edit
