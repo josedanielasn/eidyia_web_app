@@ -5,6 +5,7 @@
 import 'bootstrap'
 require("@rails/ujs").start()
 require("turbolinks").start()
+require("jquery")
 require("@rails/activestorage").start()
 require("channels")
 require("custom/dropdown")
@@ -15,3 +16,7 @@ require("custom/dropdown")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+$(document).on('turbolinks:load'), function () {
+    console.log('hello')
+}

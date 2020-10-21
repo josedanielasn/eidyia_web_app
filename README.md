@@ -1,24 +1,11 @@
-# README
+Eidiya
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Eidiya is a web application for a class management system. This is our final project in Avion School and built using Ruby on Rails and Javascript. This project is under active development and new features will continue to be added.
 
-Things you may want to cover:
+Features:
+-Account creation with back and front-end authentication using devise
+-Users can create acounts as well as log in /out
+-Users can comment on videos
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Future Features:
+-Waveforms
