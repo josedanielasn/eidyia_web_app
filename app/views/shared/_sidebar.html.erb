@@ -1,0 +1,42 @@
+<nav class="side-navbar">
+        <div class="sidebar-header d-flex align-items-center">
+            <div class="avatar"><img src="https://s.gravatar.com/avatar/ea8be90cf21a6f11a0e5a1cd9b9ebc47?s=80" alt="..." class="img-fluid rounded-circle"></div>
+            <div class="title">
+            <h1 class="h4">
+             <%= link_to current_user.username, show_users_path(current_user)  %>  
+            </h1>
+             <p><%= current_user.role %></p>
+            </div>
+        </div>
+        <span class="heading">Main</span>
+        <ul class="list-unstyled" id="side-nav">
+            <li class="<%= active_class(index_announcement_path) %>">
+                <%= link_to index_announcement_path  do %>
+                    <i class="fa fa-home"></i>Home
+                <% end %>    
+             </li>
+              <% if current_user.role == 'admin' %>
+                 <li id="drop-down"><a  href="#dropdown" aria-expanded="false" data-toggle="collapse" >
+                        <i class="fa fa-tasks"></i> Dashboard</a>
+                        <ul id="dropdown" class="collapse list-unstyled ">
+                    
+                                <li class="<%= active_class(index_courses_path) %>"> <%= link_to index_courses_path do %>
+                                        <i class="fa fa-bar-chart"></i>Course
+                                    <% end %>  </li>
+                                <li  class="<%= active_class(batch_index_path) %>"><%= link_to batch_index_path do %>
+                                    <i class="fa fa-columns"></i></i>Batch
+                                <% end %> </li> 
+                               <%= render 'shared/links' %>                   
+                        </ul>                     
+                    </li> 
+                   <li class="<%= active_class(index_users_path(user_identity: "instructor")) %>"><%= link_to index_users_path(user_identity: "instructor") do %>
+                                    <i class="fa fa-user"></i></i>Instructors
+                    <% end %></li> 
+                    <li class="<%= active_class(index_users_path(user_identity: "student")) %>"> <%= link_to index_users_path(user_identity: "student") do %>
+                                    <i class="fa fa-users"></i></i>Students
+                    <% end %></li> 
+              <%else%>
+                <%= render 'shared/links' %>      
+               <%end%>    
+        </ul>
+</nav>

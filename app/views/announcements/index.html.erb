@@ -1,0 +1,117 @@
+
+<div class="content-inner">
+    <header class="page-header">
+          <div class="container-fluid">
+            <h2 class="no-margin-bottom"> <%= link_to "Dashboard", index_announcement_path  %> </h2>
+                   
+          </div>
+    </header>   
+    <section class="root-page">
+
+   <div class="container">
+        <div class="col-md-12 ">
+            <div class="panel">
+                <div class="message-body">
+                      <textarea class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
+                    <div class="mt-3 clearfix">
+                        <button class="btn btn-sm btn-primary pull-right" type="submit">Post</button>
+                        <a class="fa fa-video-camera " href="#"></a>
+                        <a class="fa fa-camera " href="#"></a>
+                        <a class="fa fa-file " href="#"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                    
+                    <div class="panel-body">
+                                <div class="media-block">
+                                <a class="media-left" href="#">
+                                    <img src="https://s.gravatar.com/avatar/ea8be90cf21a6f11a0e5a1cd9b9ebc47?s=80" alt="..." class="img-circle img-sm">
+                                </a>
+                                <div class="media-body">
+                                    <div class="mb-3">
+                                        <a href="#" class="btn-link text-semibold"><%= current_user.username%></a>
+                                        <p class="text-muted text-sm"><i class="fa fa-globe"></i>  11 min ago</p>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <div class="pad-ver">
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-default " href="#"><i class="fa fa-thumbs-up"></i></a>
+                                            <a class="btn btn-sm btn-default " href="#"><i class="fa fa-thumbs-down"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="media-block">
+                            <a class="media-left" href="#">
+                                <img src="https://s.gravatar.com/avatar/ea8be90cf21a6f11a0e5a1cd9b9ebc47?s=80" alt="..." class="img-circle img-sm">
+                            </a>
+                            <div class="media-body">
+                                <div class="mb-3">
+                                    <a href="#" class="btn-link text-semibold"><%= current_user.username%></a>
+                                    <p class="text-muted text-sm"><i class="fa fa-globe"></i>  11 min ago</p>
+                                </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <div class="pad-ver">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-default " href="#"><i class="fa fa-thumbs-up"></i></a>
+                                        <a class="btn btn-sm btn-default " href="#"><i class="fa fa-thumbs-down"></i></a>
+                                    </div>
+                                </div>
+                            </div>         
+                        </div>
+                    </div>
+
+
+                    <div class="panel-body">
+                        <div class="media-block">
+                            <a class="media-left" href="#">
+                                <img src="https://s.gravatar.com/avatar/ea8be90cf21a6f11a0e5a1cd9b9ebc47?s=80" alt="..." class="img-circle img-sm">
+                            </a>
+                            <div class="media-body">
+                                <div class="mb-3">
+                                    <a href="#" class="btn-link text-semibold"><%= current_user.username%></a>
+                                    <p class="text-muted text-sm"><i class="fa fa-globe"></i>  11 min ago</p>
+                                </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <div class="pad-ver">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-default " href="#"><i class="fa fa-thumbs-up"></i></a>
+                                        <a class="btn btn-sm btn-default " href="#"><i class="fa fa-thumbs-down"></i></a>
+                                    </div>
+                                </div>
+                            </div>         
+                        </div>
+                    </div>
+                
+                    <div class="panel-body">
+                        <div class="media-block">
+                            <a class="media-left" href="#">
+                                <img src="https://s.gravatar.com/avatar/ea8be90cf21a6f11a0e5a1cd9b9ebc47?s=80" alt="..." class="img-circle img-sm">
+                            </a>
+                            <div class="media-body">
+                                <div class="mb-3">
+                                    <a href="#" class="btn-link text-semibold"><%= current_user.username%></a>
+                                    <p class="text-muted text-sm"><i class="fa fa-globe"></i>  11 min ago</p>
+                                </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <div class="pad-ver">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-default " href="#"><i class="fa fa-thumbs-up"></i></a>
+                                        <a class="btn btn-sm btn-default " href="#"><i class="fa fa-thumbs-down"></i></a>
+                                    </div>
+                                </div>
+                            </div>         
+                        </div>
+                    </div>
+                </div> 
+    </div>
+</div>
+    </section>     
+    <%= render partial: 'shared/footer' if current_user %>       
+</div>
+

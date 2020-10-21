@@ -1,0 +1,116 @@
+
+<div class="content-inner">
+  <header class="page-header">
+    <div class="container-fluid">
+          <h2 class="no-margin-bottom">Dashboard > Courses > sessions</h2>
+    </div>
+  </header>   
+<section class="video-section">       
+          <section class="video-container">
+            <div class="video">
+                  <p id="notice"><%= notice %></p>
+                <video
+                    id="my-video"
+                    class="video-js"
+                    controls
+                    preload="auto"
+                    width="640"
+                    height="264"
+                    poster="<%= url_for(@video.thumbnail) %>"
+                    data-setup="{}"
+                  >
+                    <source src="<%= url_for(@video.clip) %>" type="video/mp4" />
+
+                  </video>
+                    <div class="video-options d-flex column">
+                          <h1 class="video-title "> <%= @video.video_title %></h1>
+                    </div> 
+                     <div class="video-description d-flex column">
+                          <div class="d-flex">
+                            <div class="channel-details ">
+                              <a class="channel-pic " href="#">
+                                <img class="channel-avatar " src="https://www.dropbox.com/s/15tvgt5wb8nrc56/ss.jpg?raw=1" alt="Mr Suicide Sheep">
+                              </a>
+                              <div>
+                                <h3 class="username"><a class="user-link outline d-clr3" href="#">Instructor_Name</a></h3>
+                                <span class="text-muted">Uploaded on 14/10/2020</span>
+                              </div>  
+                            </div> 
+                          </div>  
+                        <div class="video-description">
+                          <h4>Description:</h4>
+                            <p>
+                               <%= @video.video_description %>
+                            </p>
+                        </div>
+                        </div>  
+            </div>
+
+          </section>              
+                    <section class="comments-section ">
+                          <div class="add-comment mb-5">
+                            <%# <form class="comment-form d-flex"> %>
+                          <%= form_with model: [@video, @comment], class: "comment-form d-flex" do |f| %>
+                              <img class="avatar " src="https://www.dropbox.com/s/4pfagze1ffpqqh4/avatar.png?raw=1" alt="Public avatar">
+                               <%= f.text_field :message_body,  placeholder:"Write a comment..." ,class:"comment-field", id:"comment-field-id" %>
+                                <%= f.submit "Comment", class: "hide" %> 
+                              <%# <input type="text"  placeholder="Write a comment..." > %>
+                          <% end %>
+                          </div> 
+                            
+                            <div id="comment_pane">
+                              <% @comments.each do |comment| %>
+                                  
+
+                              <%= render 'comments/comment', comment: comment %>
+                            
+                            
+                              <%end%>
+                            </div>
+                            
+                         
+                    </section>  
+
+
+    <%# <%= link_to 'Edit', edit_video_path(@video) %> 
+    <%# <%= link_to 'Back', videos_path %>
+    <%# <script src="https://vjs.zencdn.net/7.8.4/video.js"></script> %> 
+<%# 
+    <%= form_with model: [@video, @comment] do |f| %>
+    <%# <%= f.text_field :message_body %>
+    <%# <%= f.submit "Comment" %>
+    <%# <% end %> 
+
+    <%# <div id="comment_pane">
+      <% @comments.each do |comment| %>
+        <%# <%= render 'comments/comment', comment: comment %>
+      <%# <% end %>
+    <%# </div> %> 
+  </section>
+
+  <%# <%= javascript_pack_tag 'video_manipulation' %>
+  
+</div>
+
+
+  <script>
+    var player = videojs('#my-video');
+    var textbox = document.getElementById('comment-field-id');
+ 
+    textbox.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          player.markers.add([{
+            time: player.currentTime(),
+            text: `${gon.username} : ${textbox.value}`, 
+            overlayText: `${gon.username} : ${textbox.value}`
+              
+      }]);
+        textbox.value = "";
+    }});
+
+    player.markers({
+    markers: [
+    ]});
+
+
+  </script>

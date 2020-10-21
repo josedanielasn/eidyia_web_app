@@ -1,0 +1,7 @@
+  <tr>
+        <th scope="row"><%= link_to program.id, show_programs_path(program) %></th>
+        <td><%= program.course.course_name %></td>
+        <td><%= program.batch.batch_name%></td>
+        <td><%= link_to  "Assign", edit_programs_path(program) %> </td>
+  </tr>
+  

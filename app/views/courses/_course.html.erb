@@ -1,0 +1,26 @@
+<div class="card mb-3" >
+        <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" class="card-img" alt="...">
+
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            
+            <%= link_to session_index_path, class: "card-link" do %>
+                    <h5 class="card-title"> <%= course.course_name%></h5>
+            <%end%>
+            
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+                                irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla paria</p>
+            <%if Program.find_by(course_id: course.id).nil? %>  
+                    <p class="card-text"><small class="text-muted"><%= "Batch: none" %></small></p>
+            <%else%>
+                    <p class="card-text"><small class="text-muted"><%= "Batch: #{Program.find_by(course_id: course.id).batch.batch_name}" %></small></p>
+            <%end%>
+            <p class="card-text"><small class="text-muted">
+                    <%= link_to  "Edit Course", edit_courses_path(course) %></small></p>                                
+            </div>
+        </div>
+        </div>               
+</div>

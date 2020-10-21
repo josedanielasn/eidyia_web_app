@@ -1,0 +1,12 @@
+<div class="content-inner">
+    <header class="page-header">
+          <div class="container-fluid">
+                <h2 class="no-margin-bottom"><%= link_to "Dashboard", index_announcement_path  %> / <%= link_to "Videos",session_index_path  %></h2>
+          </div>
+    </header>   
+
+<%= render 'form', video: @video %>
+      <%= render partial: 'shared/footer' if current_user %>       
+      </div> 
+<%# <%= link_to 'Back', videos_path %> 
+</div>

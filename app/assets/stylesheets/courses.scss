@@ -1,0 +1,64 @@
+// Place all the styles related to the Courses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+/*
+  * ===========================
+  *     COURSES
+  * ===========================
+  */
+
+  .courses-section .card a{
+    font-size: 1rem;
+  }
+
+  .courses-section .card-container{
+    margin-top: 2rem;
+    margin-left: 5rem;
+  }
+
+  .courses-section .card{
+    max-width: 900px;
+  }
+
+  .card-img{
+    height: 250px
+  }
+
+  .jumbotron .btn,
+  .form-horizontal .btn{
+    margin-right: 4rem;;
+    background-color:#385777;
+    color: #fff;
+    width: 20%;
+    border: none;
+  }
+
+  .modal-footer .btn{
+    margin-right: 0;
+    color: #fff;
+    width: 20%
+  }
+
+
+  .jumbotron .btn:hover,
+  .form-horizontal .btn:hover{
+    color: #fff;
+    border: none;
+  }
+
+  .modal-footer .btn:hover{
+    background-color:#385777;
+    color: #fff;
+    border: none;
+  }
+
+  .courses-section .jumbotron {
+    max-width: 900px !important;
+    margin: 0 0 30px 0;
+  }
+
+
+
+
+  

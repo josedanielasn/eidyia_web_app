@@ -1,0 +1,88 @@
+// Place all the styles related to the session controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+  /*
+  * ===========================
+  *    Sessions
+  * ===========================
+  */
+  .videos-section {
+    text-rendering: optimizeLegibility;
+  }
+  
+  .videos-section a.btn {
+    background: #0096a0;
+    border-radius: 4px;
+    box-shadow: 0 2px 0px 0 rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    display: inline-block;
+    padding: 6px 30px 8px;
+    position: relative;
+    text-decoration: none;
+  }
+  .videos-section a.btn:hover {
+    background: #00a2ad;
+    box-shadow: 0px 8px 2px 0 rgba(0, 0, 0, 0.075);
+    transform: translateY(-2px);
+  }
+  
+  .videos-section div.cards {
+    margin: 20px auto;
+    max-width: 960px;
+    text-align: center;
+  }
+  .videos-section div.card {
+    background: #ffffff;
+    display: inline-block;
+    margin: 8px;
+    max-width: 300px;
+    position: relative;
+    text-align: left;
+    width: 300px;
+  }
+  .videos-section div.card img {
+    max-width: 300px;
+  }
+  .videos-section div.card .card__image-holder {
+    background: rgba(0, 0, 0, 0.1);
+    height: 0;
+    padding-bottom: 75%;
+  }
+  .videos-section div.card div.card-title {
+    background: #ffffff;
+    padding: 6px 15px 10px;
+    position: relative;
+    z-index: 0;
+  }
+  
+  .videos-section div.card div.card-title a.toggle-play {
+    border-radius: 32px;
+    height: 32px;
+    padding: 0;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    width: 32px;
+  }
+  
+  
+  .videos-section div.card div.card-title h2 {
+    font-size: 18px;
+    letter-spacing: -0.05em;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  .videos-section .fa{
+    font-size: 1rem;
+    margin: 6px 3px 10px 6px;
+  }
+  
+
+.btn-primary{
+    background-color: #385777 !important;
+    width: 20%;
+    border: none;
+  }
+  

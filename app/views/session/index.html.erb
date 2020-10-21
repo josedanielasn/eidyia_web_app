@@ -1,0 +1,29 @@
+<div class="content-inner">
+    <header class="page-header">
+          <div class="container-fluid">
+                <h2 class="no-margin-bottom"><%= link_to "Dashboard", index_announcement_path  %> / <%= link_to "Session",session_index_path  %></h2>
+          </div>
+    </header>   
+
+    <section class="videos-section">
+          <div class="cards">
+            <% @sessions.each do |session|%>
+                <div class="card">
+                      <div class="card__image-holder">
+                        <img class="card__image" src="https://source.unsplash.com/300x225/?wave" alt="wave" />
+                      </div>
+                      <div class="card-title">
+
+                      <%= link_to videos_path, class:"toggle-play btn" do %>
+                        <i class="fa fa-play"></i></i>
+                        <% end %></li> 
+                      
+                        <h2><%= link_to  session.session_name, edit_session_path(session)%> </h2>
+                            <small class="text-muted">Time: M-W-F(7:00PM -  9:00PM)</small>
+                      </div>
+                    
+                    </div>
+                <% end %>
+        </div>
+    </section>
+</div>  

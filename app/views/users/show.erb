@@ -1,0 +1,63 @@
+<%= stylesheet_link_tag "profile", media: "all", "data-turbolinks-track" => "reload" %>
+
+<div class="content-inner">
+    <header class="page-header">
+          <div class="container-fluid">
+                <h2 class="no-margin-bottom"><%= link_to "Profile", show_users_path(current_user)  %> </h2>
+          </div>
+    </header> 
+                  
+    <section class="user-profile py-4">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-lg-10 mr-2 ml-2" >
+                    <div class="card shadow-sm">
+                          <div class="card-header bg-transparent border-0">
+                            <h3 class="mb-0"><i class="fa fa-clone pr-1"></i>General Information</h3>
+                        </div>
+                        <div class="card-body pt-0">
+                            <table class="table table-bordered">
+                                <tr>
+                                <th width="30%">Firstname</th>
+                                <td width="2%">:</td>
+                                <td><%= @user.firstname%></td>
+                                </tr>
+                                <tr>
+                                <th width="30%">Lastname:	</th>
+                                <td width="2%">:</td>
+                                <td><%= @user.lastname%></td>
+                                </tr>
+                                <tr>
+                                <th width="30%">Username</th>
+                                <td width="2%">:</td>
+                                <td><%= @user.username%></td>
+                                </tr>
+                                <tr>
+                                <th width="30%">Email</th>
+                                <td width="2%">:</td>
+                                <td><%= @user.email%></td>
+                                </tr>
+                                <tr>
+                                  <% if current_user.role != 'admin' %>
+                                    <th width="30%">Programs</th>
+                                    <td width="2%">:</td>
+                                    <td>
+                                          <%if @user.programs.empty?%>
+                                              No Programs Yet
+                                          <%else%>
+                                            <%@user.programs.each do |program|%>
+                                              <li><%= program.course.course_name%>--<%= program.batch.batch_name%></li>  
+                                            <% end %>
+                                          <% end %>
+                                    </td>
+                                  <% end %>
+                                </tr>                                         
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+      </div>
+</div>
