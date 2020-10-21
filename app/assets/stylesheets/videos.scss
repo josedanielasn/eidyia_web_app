@@ -70,13 +70,10 @@
   .comment-box {
     margin-bottom: 1rem;
   }
-//    .d-flex {
-//      -webkit-display: flex;
-//      display: flex;
-//    }
-   .column {
-     flex-direction: column;
-   }
-.hide{
+
+  .column {
+    flex-direction: column;
+  }
+  .hide{
     display: none;
 }

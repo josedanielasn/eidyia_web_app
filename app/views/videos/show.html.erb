@@ -100,7 +100,7 @@
     textbox.addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
           player.markers.add([{
-            time: 1.5,
+            time: player.currentTime(),
             text: `${gon.username} : ${textbox.value}`, 
             overlayText: `${gon.username} : ${textbox.value}`
               
@@ -111,4 +111,6 @@
     player.markers({
     markers: [
     ]});
+
+
   </script>
