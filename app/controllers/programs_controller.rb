@@ -14,15 +14,12 @@ class ProgramsController < ApplicationController
 
   def create
     @program = Program.new(program_params)
-      respond_to do |format|
         if @program.save 
-          format.js
-          # format.json { render json: {}, status: :ok}
-          format.html { redirect_to index_programs_path}
+          redirect_to index_programs_path
         else
-          render 'new'
+          flash[:notice] =  'An error occured while saving'
+          redirect_to index_programs_path
         end
-      end
   end
 
   def show

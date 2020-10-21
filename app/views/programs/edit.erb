@@ -1,7 +1,7 @@
   <div class="content-inner">
     <header class="page-header">
             <div class="container-fluid">
-            <h2 class="no-margin-bottom">Dashboard > Courses</h2>
+            <h2 class="no-margin-bottom"><%= link_to "Dashboard", index_announcement_path  %> > <%= link_to "Program", index_programs_path  %></h2>
           </div>
     </header>   
       
@@ -14,21 +14,21 @@
               <div class="card-body">
                 <%=  form_with model: @program, url: {controller: 'programs', action: 'update'}, :class => "form-horizontal" do |f|%>
                     <div class="form-group row">
-                        <label class="col-sm-4 form-control-label">Instructor</label> 
+                        <label class="col-sm-4 form-control-label">Instructor:</label> 
                         <div class="col-sm-8">
                                 <%= text_field_tag(:query_instructor) %>          
                         </div>
                     </div>
 
                     <div class="form-group row">
-                          <label class="col-sm-4 form-control-label">Student</label> 
+                          <label class="col-sm-4 form-control-label">Student:</label> 
                           <div class="col-sm-8">
                                    <%= text_field_tag(:query_student) %>           
                           </div>
                     </div>
                     
                     <div class="form-group row">
-                          <label class="col-sm-4 form-control-label">Course Name</label>
+                          <label class="col-sm-4 form-control-label">Course Name:</label>
                     
                       <div class="col-sm-8">
                             <%= f.select :course_id, @course.collect { |p| [ p.course_name, p.id ] }, {include_blank: "-select course-"},{class: "form-control"} %>          
@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="form-group row">
-                          <label class="col-sm-4 form-control-label">Batch Name</label>
+                          <label class="col-sm-4 form-control-label">Batch Name:</label>
                     
                         <div class="col-sm-8">
                               <%= f.select :batch_id, @batch.collect { |p| [ p.batch_name, p.id ] }, {include_blank: "-select course-"},{class: "form-control"} %>
