@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'comments/create'
   devise_for :users 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -41,6 +42,11 @@ Rails.application.routes.draw do
   patch '/videos/:id'        => 'videos#update'
   delete '/videos/:id'       => 'videos#destroy'
   #video routes end
+
+  #comment
+  post '/videos/:video_id/comments'             => 'comments#create', as: 'video_comments'
+
+
 
   #Program 
   get '/program/index'       =>  'programs#index', as: 'index_programs'
