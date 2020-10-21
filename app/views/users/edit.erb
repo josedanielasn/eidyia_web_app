@@ -33,7 +33,15 @@
                  <div class="form-group row">
                         <label class="col-sm-4 form-control-label"> Role: </label>
                         <div class="col-sm-8">
-                        <%= f.select :role, User.roles { |p| [ p.keys, p.values ] }, {include_blank: true}, {class:  "form-control"} %>
+                        <%# <%= f.select :role, User.roles.each { |p| [p[0], p[0]]  }, 
+                        {selected: @user.role}, {class:  "form-control"} do %>
+
+                       <select name="role" class="form-control">
+                            <option value="admin">admin</option>
+                            <option value="instructor">instructor</option>    
+                            <option value="student">student</option>
+                          </select>
+                        
                       </div>
                  </div>     
                    <div class="form-group row">
@@ -46,7 +54,7 @@
                   <div class="form-group row">
                     <label class="col-sm-4 form-control-label"> Password: </label>
                     <div class="col-sm-8">
-                        <%= f.password_field :password, class: "form-control" %>
+                        <%= f.text_field :password, class: "form-control" %>
                     
                       </div>
                  </div>   
